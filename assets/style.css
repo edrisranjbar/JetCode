@@ -1,0 +1,328 @@
+:root {
+  --dark: #1e1c1c;
+  --dark80: rgba(30, 28, 28, 0.8);
+  --dark70: rgba(30, 28, 28, 0.7);
+  --light_blue: #7c96f7;
+  --orange: #ffba08;
+  --smoky_white: #f0f0f0;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  font-family: Samim;
+  background-color: var(--dark);
+  margin: 0px;
+  direction: rtl;
+  overflow-x: hidden;
+}
+
+header {
+  min-height: 232px;
+  background-image: url("../images/Header_Background.svg");
+  background-repeat: no-repeat;
+  background-position: top right;
+}
+
+.logo {
+  height: 50px;
+  width: 50px;
+}
+
+/* Menu */
+.menu {
+  display: flex;
+  align-items: center;
+  padding: 48px 83px 0px 0px;
+}
+
+.menu ul {
+  margin: 0px;
+}
+
+.menu ul li {
+  display: inline-block;
+  margin-left: 32px;
+  font-weight: bold;
+  font-size: 24px;
+  color: var(--dark80);
+  transition: color 0.4s;
+}
+
+.menu li:hover {
+  color: var(--light_blue);
+}
+
+/* End Menu */
+
+/* Hero Section */
+.hero {
+  display: flex;
+}
+
+.hero .right {
+  margin-right: 45px;
+  margin-top: 45px;
+}
+
+.hero .title {
+  color: var(--white);
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 78px;
+  margin: 0px 0px 18px 0px;
+}
+
+.hero .subtitle {
+  color: var(--smoky_white);
+  font-size: 30px;
+  line-height: 47px;
+  font-weight: 500px;
+  margin-bottom: 35px;
+}
+
+.hero .left img {
+  width: 777px;
+  height: 394px;
+  position: relative;
+  left: -149px;
+  margin-bottom: 78px;
+}
+
+.btn {
+  min-width: 143px;
+  min-height: 65px;
+  margin-left: 15px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
+  display: inline-block;
+  outline: unset;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--orange);
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 37px;
+  color: var(--dark80);
+  border: unset;
+}
+
+.btn-secondary-outline {
+  border: 2px solid var(--light_blue);
+  background-color: transparent;
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--white);
+}
+
+.btn-secondary {
+  background-color: var(--light_blue);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--white);
+  border: unset;
+}
+
+/* End Hero Section */
+
+/* About Section */
+.about {
+  display: flex;
+  background-image: url("../images/About_Background.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top left;
+  padding-top: 169px;
+  min-height: 900px;
+}
+
+.about .right {
+  padding-right: 46px;
+}
+
+.about .title {
+  font-weight: bold;
+  font-size: 50px;
+  color: var(--dark80);
+  line-height: 78px;
+  margin: 0px 0px 45px 0px;
+}
+
+.about .description {
+  font-size: 20px;
+  color: var(--dark70);
+  line-height: 31px;
+  margin-bottom: 30px;
+  margin-left: 50px;
+}
+
+/* End About Section */
+
+/* Posts Section */
+.posts {
+  background-image: url("../images/Wave_Background.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  top: -417px;
+  padding-top: 417px;
+  padding-bottom: 186px;
+}
+
+.posts .title {
+  font-size: 50px;
+  font-weight: bold;
+  color: var(--dark);
+  text-align: center;
+}
+
+.posts .wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.posts .card {
+  width: 350px;
+  min-height: 550px;
+  background-color: var(--white);
+  box-shadow: 0px 4px 30px var(--dark70);
+  border-radius: 10px;
+  position: relative;
+  margin-left: 22px;
+}
+
+.card .thumbnail {
+  width: 100%;
+  height: 264px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.card .overlay {
+  background: linear-gradient(180deg,
+      transparent,
+      rgba(0, 0, 0, 0.5) 60%,
+      #111111 100%);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 264px;
+}
+
+.card-title {
+  color: var(--white);
+  position: absolute;
+  right: 10px;
+  top: 170px;
+  margin-left: 10px;
+  font-size: 24px;
+  line-height: 37px;
+  font-weight: bold;
+}
+
+.badge {
+  margin-left: 10px;
+  background-color: #e3e3e3;
+  padding: 5px 10px;
+  font-size: 16px;
+  line-height: 25px;
+  border-radius: 10px;
+  color: var(--dark80);
+}
+
+.card-body {
+  padding: 22px 10px;
+}
+
+.card-description {
+  color: var(--dark70);
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.views {
+  position: absolute;
+  bottom: 22px;
+  right: 18px;
+}
+
+.views::before {
+  content: url("../images/Eye.svg");
+  margin-left: 10px;
+}
+
+.posts button.btn-secondary {
+  margin-top: 91px;
+}
+
+/* End Posts Section */
+
+/* Tutorials Section */
+.tutorials {
+  margin-top: -417px;
+  margin-bottom: 102px;
+}
+
+.tutorials .wrapper {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-right: 78px;
+}
+
+.tutorials img {
+  width: 339px;
+  height: 200px;
+  border-radius: 30px;
+  margin-left: 51px;
+}
+
+.tutorials .title {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--white);
+}
+
+/* End Tutorials Section */
+
+/* Footer */
+footer {
+  background-image: url("../images/Footer_Background.svg");
+  background-size: cover;
+  color: var(--dark80);
+  font-size: 18px;
+  padding-top: 80px;
+  padding-bottom: 10px;
+}
+
+footer p {
+  text-align: center;
+}
+
+/* End Footer */
+
+/* Glider */
+.glider-track {
+  margin: 0px 20px !important;
+}
+
+.glider-dot.active {
+  background: var(--light_blue) !important;
+}
+
+/* End Glider */
