@@ -1,10 +1,5 @@
 new Glider(document.querySelector('.glider'), {
-    slidesToScroll: 1,
-    slidesToShow: 4,
+    slidesToShow: "auto",
     draggable: true,
     dots: '.dots',
-    arrows: {
-        prev: '.glider-prev',
-        next: '.glider-next'
-    }
 });
