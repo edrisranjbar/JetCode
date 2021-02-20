@@ -30,7 +30,9 @@ body {
   direction: rtl;
   overflow-x: hidden;
 }
-
+.align-center {
+  align-items: center;
+}
 .header_bg {
   position: absolute;
   width: 100%;
@@ -38,7 +40,7 @@ body {
   left: 0px;
   top: 0px;
   z-index: -1;
-  background: linear-gradient(180deg, #7C96F7 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(180deg, #7c96f7 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 header {
@@ -266,10 +268,12 @@ header {
 }
 
 .card .overlay {
-  background: linear-gradient(180deg,
-      transparent,
-      rgba(0, 0, 0, 0.5) 60%,
-      #111111 100%);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(0, 0, 0, 0.5) 60%,
+    #111111 100%
+  );
   position: absolute;
   top: 0px;
   left: 0px;
@@ -483,7 +487,6 @@ header {
   z-index: -2;
 }
 
-
 .blog-left-hashtag {
   position: absolute;
   width: 359px;
@@ -665,6 +668,196 @@ footer p {
 }
 
 /* End Category */
+
+/* Post Page */
+.row {
+  display: flex;
+}
+
+main.post {
+  padding: 26px;
+}
+
+main.post article {
+  max-width: 70%;
+  margin-left: 28px;
+  padding-bottom: 20px;
+  background-color: var(--white);
+  box-shadow: 0px 4px 30px rgba(204, 204, 204, 0.7);
+  border-radius: 10px;
+}
+
+.post-header {
+  padding: 56px 46px 41px 0px;
+  background: #7c96f7;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.post-title {
+  color: var(--white);
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 56px;
+}
+
+.post-content {
+  padding: 30px 26px 20px 26px;
+  font-size: 18px;
+  line-height: 31px;
+  text-align: right;
+  color: var(--dark);
+}
+
+.comments {
+  background-color: var(--light_blue);
+  box-shadow: 0px 4px 30px rgba(204, 204, 204, 0.7);
+  border-radius: 10px;
+  margin: 0px 20px;
+}
+
+.comment-form {
+  justify-content: space-between;
+  padding: 34px 20px 0px 34px;
+  font-size: 24px;
+  line-height: 37px;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.comment-form form {
+  width: 70%;
+}
+
+.comment-form input,
+textarea {
+  background: #ffffff;
+  border: 2px solid #7c96f7;
+  border-radius: 10px;
+  outline: unset;
+  margin: 0px 10px 0px 22px;
+  font-size: 18px;
+  font-family: inherit;
+  padding: 5px 10px;
+  min-width: 80%;
+}
+
+.comment-form textarea {
+  min-height: 201px;
+  max-height: 501px;
+  max-width: 80%;
+}
+
+.comment-form .row {
+  justify-content: space-between;
+}
+
+.comment-form .row:not(:first-child) {
+  margin-top: 22px;
+}
+
+.comment-form .row:last-child {
+  flex-direction: row-reverse;
+}
+
+.comments-list ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+}
+.comments-list ul li:nth-child(even) {
+  align-self: flex-end;
+}
+.comment {
+  max-width: 456px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 30px rgba(204, 204, 204, 0.7);
+  border-radius: 10px;
+  padding: 13px 20px;
+  margin: 15px 25px 0px 25px;
+  position: relative;
+}
+.reply {
+  width: 456px;
+}
+.comment .row {
+  align-items: center;
+}
+.comment-date {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border-radius: 5px;
+  background-color: var(--light_blue);
+  padding: 3px 5px;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--white);
+}
+.comment-title {
+  margin-right: 10px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: right;
+  color: var(--dark80);
+}
+.comment-text p {
+  font-size: 14px;
+  line-height: 22px;
+  text-align: right;
+}
+.more-comment-row {
+  justify-content: center;
+}
+.more-comment-btn {
+  margin: 41px 0px 19px 0px;
+}
+
+/* Sidebar */
+aside {
+  max-width: 30%;
+}
+.widget {
+  box-shadow: 0px 4px 30px rgba(204, 204, 204, 0.7);
+  border-radius: 10px;
+  background-color: var(--white);
+  margin-bottom: 15px;
+}
+.widget-title {
+  padding: 22px 15px;
+  background-color: var(--light_blue);
+  border-radius: 10px 10px 0px 0px;
+  font-weight: bold;
+  font-size: 24px;
+  color: var(--white);
+}
+.widget-title h3 {
+  margin: 0px;
+}
+.widget-body {
+  padding: 15px;
+}
+.widget-body img.widget-image {
+  width: 100%;
+  border-radius: 10px;
+}
+.widget-body p {
+  font-size: 18px;
+  line-height: 28px;
+  text-align: right;
+  color: var(--dark80);
+  margin: 10px 0px;
+}
+.widget-body ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+/* End Sidebar */
+
+/* End Post Page */
 
 /* Glider */
 .glider-track {
