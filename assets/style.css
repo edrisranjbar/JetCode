@@ -266,6 +266,11 @@ header {
   text-align: center;
 }
 
+.posts .wrapper:first-of-type {
+  justify-content: flex-start;
+  padding-right: 15px;
+}
+
 .posts .wrapper,
 .blog-posts .wrapper {
   display: flex;
