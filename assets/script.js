@@ -1,5 +1,6 @@
 let humberger_menu = document.querySelector('.humberger-menu');
 let humberger_menu_bars = document.querySelectorAll('.humberger-menu > .bar');
+let menu = document.querySelector('.menu');
 let is_open = false;
 new Glider(document.querySelector('.glider'), {
     slidesToShow: "auto",
@@ -10,12 +11,14 @@ new Glider(document.querySelector('.glider'), {
 // Toggle Humberger menu
 function toggle_menu(is_open) {
     if (!is_open) {
+        menu.classList.remove('menu-open');
         humberger_menu_bars.forEach((element) => {
             element.style.display = "block";
             element.style.transform = "unset";
             element.style.top = "unset";
         });
     } else {
+        menu.classList.add('menu-open');
         humberger_menu_bars[0].style.transform = "rotate(45deg)";
         humberger_menu_bars[0].style.top = "11px";
         humberger_menu_bars[1].style.display = "none";

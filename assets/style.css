@@ -929,11 +929,54 @@ aside {
   }
 
   .humberger-menu {
+    z-index: 4;
     display: initial;
   }
 
   .menu {
     display: none;
+    align-items: flex-start;
+  }
+
+  .menu-open {
+    padding: 0px;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    position: fixed;
+    z-index: 3;
+    background-color: var(--dark);
+    flex-direction: column;
+  }
+
+  .menu ul {
+    padding: 0px;
+  }
+
+  .menu ul li {
+    color: var(--white);
+    margin-left: 0px;
+    padding-right: 26px;
+    width: 75vw;
+  }
+
+  .menu a {
+    margin-top: 24px;
+  }
+
+  .menu a:hover,
+  .menu a:focus {
+    background-color: var(--orange);
+    border-radius: 10px 0px 0px 10px;
+  }
+
+  .menu ul a {
+    display: block;
+  }
+
+  .logo {
+    align-self: flex-end;
+    margin: 15px;
   }
 
   .hero {
