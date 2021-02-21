@@ -30,9 +30,15 @@ body {
   direction: rtl;
   overflow-x: hidden;
 }
+
 .align-center {
   align-items: center;
 }
+
+.justify-center {
+  justify-content: center;
+}
+
 .header_bg {
   position: absolute;
   width: 100%;
@@ -165,6 +171,7 @@ header {
   background-color: transparent;
   font-weight: 700;
   font-size: 24px;
+  line-height: 37px;
   color: var(--white);
 }
 
@@ -181,9 +188,9 @@ header {
 /* About Section */
 .about {
   display: flex;
-  background-image: url("../images/About_Background.svg");
+  background-image: url("../images/About_Background.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
   background-position: top left;
   padding-top: 169px;
   min-height: 900px;
@@ -228,7 +235,7 @@ header {
 .posts {
   background-image: url("../images/Wave_Background.svg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
   position: relative;
   top: -435px;
   padding-top: 417px;
@@ -268,12 +275,10 @@ header {
 }
 
 .card .overlay {
-  background: linear-gradient(
-    180deg,
-    transparent,
-    rgba(0, 0, 0, 0.5) 60%,
-    #111111 100%
-  );
+  background: linear-gradient(180deg,
+      transparent,
+      rgba(0, 0, 0, 0.5) 60%,
+      #111111 100%);
   position: absolute;
   top: 0px;
   left: 0px;
@@ -344,7 +349,6 @@ header {
 
 .tutorials img {
   width: 339px;
-  height: 200px;
   border-radius: 30px;
   margin-left: 51px;
 }
@@ -644,7 +648,7 @@ select.order {
 /* Footer */
 footer {
   background-image: url("../images/Footer_Background.svg");
-  background-size: cover;
+  background-size: 100% 100%;
   color: var(--dark80);
   font-size: 18px;
   padding-top: 80px;
@@ -766,9 +770,11 @@ textarea {
   display: flex;
   flex-direction: column;
 }
+
 .comments-list ul li:nth-child(even) {
   align-self: flex-end;
 }
+
 .comment {
   max-width: 456px;
   background-color: #f9f9f9;
@@ -778,12 +784,15 @@ textarea {
   margin: 15px 25px 0px 25px;
   position: relative;
 }
+
 .reply {
   width: 456px;
 }
+
 .comment .row {
   align-items: center;
 }
+
 .comment-date {
   position: absolute;
   top: 10px;
@@ -795,6 +804,7 @@ textarea {
   line-height: 20px;
   color: var(--white);
 }
+
 .comment-title {
   margin-right: 10px;
   font-weight: 500;
@@ -803,14 +813,17 @@ textarea {
   text-align: right;
   color: var(--dark80);
 }
+
 .comment-text p {
   font-size: 14px;
   line-height: 22px;
   text-align: right;
 }
+
 .more-comment-row {
   justify-content: center;
 }
+
 .more-comment-btn {
   margin: 41px 0px 19px 0px;
 }
@@ -819,12 +832,14 @@ textarea {
 aside {
   max-width: 30%;
 }
+
 .widget {
   box-shadow: 0px 4px 30px rgba(204, 204, 204, 0.7);
   border-radius: 10px;
   background-color: var(--white);
   margin-bottom: 15px;
 }
+
 .widget-title {
   padding: 22px 15px;
   background-color: var(--light_blue);
@@ -833,16 +848,20 @@ aside {
   font-size: 24px;
   color: var(--white);
 }
+
 .widget-title h3 {
   margin: 0px;
 }
+
 .widget-body {
   padding: 15px;
 }
+
 .widget-body img.widget-image {
   width: 100%;
   border-radius: 10px;
 }
+
 .widget-body p {
   font-size: 18px;
   line-height: 28px;
@@ -850,11 +869,13 @@ aside {
   color: var(--dark80);
   margin: 10px 0px;
 }
+
 .widget-body ul {
   list-style: none;
   margin: 0px;
   padding: 0px;
 }
+
 /* End Sidebar */
 
 /* End Post Page */
@@ -878,3 +899,197 @@ aside {
 }
 
 /* End Glider */
+
+/* Mobile */
+@media screen and (max-width: 420px) {
+  body {
+    overflow-x: initial;
+  }
+
+  header {
+    min-height: 68px;
+    background-image: none;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .hero .title {
+    font-size: 20px;
+    margin: 0px 0px 10px 0px;
+    line-height: 31px;
+  }
+
+  .hero .subtitle {
+    font-size: 16px;
+    line-height: 25px;
+    margin: 0 0 18px 0;
+  }
+
+  .btn {
+    min-width: 100px;
+    min-height: unset;
+  }
+
+  .btn-secondary-outline {
+    font-size: 16px;
+  }
+
+  .btn-secondary {
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .btn-primary {
+    font-size: 16px;
+  }
+
+  .hero .left {
+    margin-bottom: 26.5px;
+  }
+
+  .hero .left img {
+    max-height: 98.5px;
+    max-width: 100%;
+    position: initial;
+    left: unset;
+  }
+
+  .hero .right {
+    margin: 0px 10px;
+  }
+
+  .about {
+    flex-direction: column;
+    padding-top: 78px;
+    padding-bottom: 42px;
+    margin-top: 56px;
+    min-height: unset;
+  }
+
+  .about .right {
+    padding-right: 15px;
+  }
+
+  .about .title {
+    font-size: 25px;
+    line-height: 39px;
+    margin: 0 15px 5px 0;
+  }
+
+  .about .description {
+    font-size: 16px;
+    line-height: 25px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+  }
+
+  .about .circle {
+    width: 39px;
+    height: 39px;
+    right: 15px;
+  }
+
+  .about .left {
+    margin-right: 17px;
+  }
+
+  .about .left img {
+    max-width: 100%;
+  }
+
+  .posts {
+    padding-top: 294px;
+    top: -285px;
+    background-image: url('../images/Mobile_Wave_Background.svg');
+    padding-bottom: 87px;
+  }
+
+  .posts .title {
+    font-size: 25px;
+    line-height: 39px;
+    margin: 0 0 39px 0;
+  }
+
+  .posts>.wrapper {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+  }
+
+  .posts .card {
+    min-height: 404px;
+    width: 251px;
+    margin-left: 15px;
+    margin-bottom: 0px;
+    flex-shrink: 0;
+  }
+
+  .card .thumbnail,
+  .card .overlay {
+    height: 189px;
+  }
+
+  .card-title {
+    font-size: 16px;
+    top: 115px;
+  }
+
+  .card-body {
+    padding: 11px 10px;
+  }
+
+  .badge {
+    font-size: 12px;
+    line-height: 19px;
+    margin-left: 5px;
+  }
+
+  .card-description {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .views {
+    font-size: 12px;
+    line-height: 19px;
+    color: var(--dark);
+  }
+
+  .views::before {
+    margin-left: 2px;
+  }
+
+  .posts button.btn-secondary {
+    margin-top: 17px;
+  }
+
+  .tutorials {
+    margin-bottom: unset;
+    margin-top: -295px;
+  }
+
+  .tutorials .title {
+    font-size: 25px;
+    line-height: 39px;
+  }
+
+  .tutorials .glider-slide {
+    min-width: 176px;
+  }
+
+  .tutorials img {
+    width: 176px;
+  }
+
+  footer {
+    background-image: url('../images/Mobile_Footer_Background.svg');
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
