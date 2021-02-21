@@ -69,6 +69,21 @@ header {
   width: 50px;
 }
 
+.humberger-menu {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: none;
+}
+
+.humberger-menu>.bar {
+  background-color: var(--white);
+  width: 40px;
+  height: 5px;
+  border-radius: 5px;
+  margin-bottom: 6px;
+}
+
 /* Menu */
 .menu {
   display: flex;
@@ -909,6 +924,10 @@ aside {
   header {
     min-height: 68px;
     background-image: none;
+  }
+
+  .humberger-menu {
+    display: initial;
   }
 
   .menu {
