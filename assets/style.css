@@ -110,6 +110,14 @@ header {
   color: var(--light_blue);
 }
 
+.menu_footer {
+  display: none;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  z-index: 4;
+}
+
 /* End Menu */
 
 /* Hero Section */

@@ -1,7 +1,9 @@
+let body = document.querySelector('body');
+let header = document.querySelector('header');
 let humberger_menu = document.querySelector('.humberger-menu');
 let humberger_menu_bars = document.querySelectorAll('.humberger-menu > .bar');
 let menu = document.querySelector('.menu');
-let body = document.querySelector('body');
+let menu_footer = document.querySelector('.menu_footer');
 let is_open = false;
 
 new Glider(document.querySelector('.glider'), {
@@ -13,9 +15,11 @@ new Glider(document.querySelector('.glider'), {
 // Toggle Humberger menu
 function toggle_menu(is_open) {
     if (!is_open) {
+        header.style.height = "unset";
         body.style.height = "unset";
         body.style.overflowY = "unset";
         menu.classList.remove('menu-open');
+        menu_footer.style.display = "none";
         humberger_menu_bars.forEach((element) => {
             menu.classList.remove('menu-open');
             element.style.display = "block";
@@ -23,6 +27,8 @@ function toggle_menu(is_open) {
             element.style.top = "unset";
         });
     } else {
+        header.style.height = "100vh";
+        menu_footer.style.display = "initial";
         body.style.height = "100vh";
         body.style.overflowY = "hidden";
         menu.classList.add('menu-open');
