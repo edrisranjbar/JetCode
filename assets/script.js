@@ -5,12 +5,13 @@ let humberger_menu_bars = document.querySelectorAll('.humberger-menu > .bar');
 let menu = document.querySelector('.menu');
 let menu_footer = document.querySelector('.menu_footer');
 let is_open = false;
-
-new Glider(document.querySelector('.glider'), {
-    slidesToShow: "auto",
-    draggable: true,
-    dots: '.dots',
-});
+if (document.querySelector('.glider')) {
+    new Glider(document.querySelector('.glider'), {
+        slidesToShow: "auto",
+        draggable: true,
+        dots: '.dots',
+    });
+}
 
 // Toggle Humberger menu
 function toggle_menu(is_open) {

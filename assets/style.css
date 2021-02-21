@@ -31,6 +31,11 @@ body {
   overflow-x: hidden;
 }
 
+.wrapper,
+.row {
+  display: flex;
+}
+
 .align-center {
   align-items: center;
 }
@@ -166,7 +171,6 @@ header {
   border-radius: 5px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   justify-content: center;
   align-items: center;
   font-family: inherit;
@@ -433,6 +437,7 @@ header {
 }
 
 .podcasts .description {
+  margin: 0px 0px 30px 0px;
   color: #e0e0e0;
   font-weight: 500;
   font-size: 24px;
@@ -442,6 +447,7 @@ header {
 .podcast_illustration {
   position: relative;
   top: -60px;
+  max-width: 100%;
 }
 
 .podcasts .podcast_frame {
@@ -460,11 +466,18 @@ header {
   align-items: center;
 }
 
+.page_404 .wrapper {
+  flex-direction: column;
+  min-height: calc(100vh - 243px);
+  justify-content: center;
+  align-items: center;
+}
+
 .error-404-text {
   font-size: 30px;
   line-height: 47px;
   font-weight: bold;
-  margin: 35px initial initial initial;
+  margin: 35px 0 0 0;
 }
 
 .error-404-link-back {
@@ -1163,6 +1176,72 @@ aside {
   .tutorials img {
     width: 176px;
   }
+
+  /* 404 Page */
+
+  .image_404 {
+    max-width: 300px;
+  }
+
+  .error-404-text {
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .error-404-link-back {
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  /* End 404 Page */
+
+  /* Podcast Page */
+  .mic {
+    width: 95px;
+    height: 107px;
+  }
+
+  .podcasts {
+    padding: 0px 17px;
+    text-align: center;
+  }
+
+  .podcasts .wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .podcast_illustration {
+    top: unset;
+    margin-top: 62px;
+  }
+
+  .podcasts .title {
+    font-size: 25px;
+    margin-bottom: 7px;
+    line-height: 39px;
+  }
+
+  .podcasts .description {
+    font-size: 16px;
+    line-height: 25px;
+    margin: 0px 0px 15px 0px;
+  }
+
+  .podcasts .icons {
+    margin-bottom: 19px;
+  }
+
+  .podcasts .right .btn {
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .podcasts .podcast_frame {
+    margin-bottom: unset;
+  }
+
+  /* End Podcast Page */
 
   footer {
     background-image: url('../images/Mobile_Footer_Background.svg');
