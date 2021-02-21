@@ -17,6 +17,7 @@ function toggle_menu(is_open) {
         body.style.overflowY = "unset";
         menu.classList.remove('menu-open');
         humberger_menu_bars.forEach((element) => {
+            menu.classList.remove('menu-open');
             element.style.display = "block";
             element.style.transform = "unset";
             element.style.top = "unset";
