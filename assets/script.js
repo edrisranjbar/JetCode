@@ -4,7 +4,9 @@ let humberger_menu = document.querySelector('.humberger-menu');
 let humberger_menu_bars = document.querySelectorAll('.humberger-menu > .bar');
 let menu = document.querySelector('.menu');
 let menu_footer = document.querySelector('.menu_footer');
+let blog_hero = document.querySelector('.blog-hero');
 let is_open = false;
+
 if (document.querySelector('.glider')) {
     new Glider(document.querySelector('.glider'), {
         slidesToShow: "auto",
@@ -55,3 +57,22 @@ categories.forEach((element) => {
     let color = colors[i++];
     element.classList.add(`${color}-bg`);
 });
+
+// Swipe up blog hero section
+let swipe = new Swipe('.handler-line');
+swipe.onUp(() => {
+    console.log("Moved Up")
+    blog_hero.style.marginTop = "-385px";
+    window.setTimeout(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }, 500)
+});
+swipe.onDown(() => {
+    console.log("Moved Down")
+    blog_hero.style.marginTop = "-68px";
+});
+swipe.run();
