@@ -24,7 +24,12 @@ input {
   font-family: inherit;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
+  position: relative;
   font-family: Samim;
   margin: 0px;
   direction: rtl;
@@ -713,7 +718,9 @@ footer p {
 /* End Footer */
 
 /* Category */
-.category .title {
+.category .title,
+.tag .title,
+.search-results .title {
   text-align: center;
   font-size: 40px;
   line-height: 62px;
@@ -953,8 +960,10 @@ aside {
 
 /* Mobile */
 @media screen and (max-width: 420px) {
-  body {
-    overflow-x: initial;
+
+  body,
+  html {
+    overflow-x: hidden;
   }
 
   header {
@@ -1349,6 +1358,10 @@ aside {
     margin-left: unset;
   }
 
+  .blog-posts .card:last-of-type {
+    margin-bottom: unset;
+  }
+
   .blog-posts .card a {
     position: absolute;
     top: 5px;
@@ -1375,6 +1388,7 @@ aside {
   .blog-posts .btn-primary {
     font-size: 14px;
     line-height: 22px;
+    margin-top: 30px;
   }
 
   /* End Blog Page */
@@ -1464,6 +1478,68 @@ aside {
     max-width: 100%;
   }
 
+  /* Category Page */
+  .header_bg {
+    height: 124px;
+  }
+
+  .blog-right-folder {
+    right: -11px;
+    top: 47px;
+    width: 66.47px;
+    height: 58.44px;
+  }
+
+  .blog-left-folder {
+    left: -13.78px;
+    top: 5px;
+    width: 66.47px;
+    height: 58.44px;
+  }
+
+  .category .title,
+  .tag .title,
+  .search-results .title {
+    font-size: 25px;
+    line-height: 39px;
+    margin-top: unset;
+  }
+
+  /* End Category Page */
+
+  /* Tag Page */
+  .blog-left-hashtag {
+    left: -13.78px;
+    top: 5px;
+    width: 66.47px;
+    height: 58.44px;
+  }
+
+  .blog-right-hashtag {
+    right: -11px;
+    top: 47px;
+    width: 66.47px;
+    height: 58.44px;
+  }
+
+  /* End Tag Page */
+
+  /* Search results Page */
+  .blog-right-search {
+    right: -11px;
+    top: 87px;
+    width: 66.47px;
+    height: 58.44px;
+  }
+
+  .blog-left-search {
+    left: -13.78px;
+    top: 25px;
+    width: 66.47px;
+    height: 58.44px;
+  }
+
+  /* End Search results Page */
   footer {
     background-image: url('../images/Mobile_Footer_Background.svg');
     font-size: 14px;
