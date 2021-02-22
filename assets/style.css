@@ -811,7 +811,7 @@ textarea {
 }
 
 .comment-form .row:last-child {
-  flex-direction: row-reverse;
+  flex-direction: row-reverse !important;
 }
 
 .comments-list ul {
@@ -1378,6 +1378,92 @@ aside {
   }
 
   /* End Blog Page */
+
+  /* Post Page */
+  .post {
+    padding: 10px !important;
+  }
+
+  .post-title {
+    font-size: 25px;
+    line-height: 39px;
+    margin: 0px 0px 15px 0px;
+  }
+
+  .post-content {
+    padding: 10px;
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .comments {
+    margin: 0 10px;
+  }
+
+  .comment-form {
+    padding: 34px 15px 0px 15px;
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .comment-form .row {
+    flex-direction: row !important;
+  }
+
+  .comment-form form {
+    width: 100%;
+  }
+
+  .comment-form input {
+    margin: 0px;
+  }
+
+  .comment-form textarea {
+    max-width: 100%;
+    margin-left: 0px !important;
+  }
+
+  .post>.row {
+    flex-direction: column;
+  }
+
+  .comment-form .btn {
+    margin-left: 0px;
+  }
+
+  main.post article {
+    max-width: 100%;
+    margin-left: unset;
+  }
+
+  .comment-illustration {
+    display: none;
+  }
+
+  .reply {
+    width: 100%;
+    margin: 0px !important;
+  }
+
+  .comment {
+    margin: 15px 15px 0px 15px;
+  }
+
+  .more-comment-btn {
+    margin: 26px 0 26px 0;
+  }
+
+  /* End Post Page */
+  .btn-sm {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .post aside {
+    padding-top: 20px;
+    max-width: 100%;
+  }
+
   footer {
     background-image: url('../images/Mobile_Footer_Background.svg');
     font-size: 14px;
