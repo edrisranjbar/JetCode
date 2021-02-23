@@ -271,8 +271,8 @@ header {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   position: relative;
-  top: -435px;
-  padding-top: 417px;
+  top: -497px;
+  padding-top: 447px;
   padding-bottom: 186px;
 }
 
@@ -283,10 +283,10 @@ header {
   text-align: center;
 }
 
-.posts .wrapper:first-of-type {
+/* .posts .wrapper:first-of-type {
   justify-content: flex-start;
   padding-right: 15px;
-}
+} */
 
 .posts .wrapper,
 .blog-posts .wrapper {
@@ -303,7 +303,8 @@ header {
   box-shadow: 0px 4px 30px var(--light_shadow);
   border-radius: 10px;
   position: relative;
-  margin-left: 22px;
+  margin-left: 11px;
+  margin-right: 11px;
   margin-bottom: 91px;
 }
 
@@ -866,10 +867,11 @@ textarea {
 .comment-title {
   margin-right: 10px;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 28px;
   text-align: right;
   color: var(--dark80);
+  max-width: none;
 }
 
 .comment-text p {
@@ -958,8 +960,156 @@ aside {
 
 /* End Glider */
 
+/* Large Tablet */
+@media screen and (max-width: 1280px) {
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .hero .left img {
+    max-height: 200px;
+    max-width: 100%;
+    position: initial;
+    left: unset;
+  }
+
+  .hero .left {
+    margin-bottom: 26.5px;
+  }
+
+  .hero .right {
+    margin: 0px 10px;
+  }
+
+  /* About Section */
+  .about {
+    flex-direction: column;
+    padding-top: 78px;
+    padding-bottom: 42px;
+    margin-top: 56px;
+    min-height: unset;
+  }
+
+  .about .left {
+    margin-right: 46px;
+    margin-left: 50px;
+  }
+
+  .about .left img {
+    max-width: 100%;
+    float: left;
+  }
+
+  /* End About Section */
+
+  /* Posts Section */
+  .posts {
+    top: -415px;
+    padding-top: 415px;
+    background-image: url('../images/Mobile_Wave_Background.png');
+  }
+
+  .posts>.wrapper {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+  }
+
+  .posts .wrapper:first-of-type {
+    justify-content: flex-start;
+    padding-right: 15px;
+  }
+
+  .posts .card {
+    margin-left: 15px;
+    margin-bottom: 0px;
+    flex-shrink: 0;
+  }
+
+  /* End Posts Section */
+
+  /* Post Page */
+  .comment-illustration {
+    max-width: 175px;
+  }
+
+  /* End Post Page */
+
+}
+
+/* End Large Tablet */
+
+/* Medium Tablet */
+@media screen and (max-width: 769px) {
+
+  /* Blog Page */
+  .blog-left-square,
+  .blog-right-square {
+    display: none;
+  }
+
+  /* End Blog Page */
+
+  /* Podcast Page */
+  .podcasts {
+    text-align: center;
+  }
+
+  .mic {
+    display: none;
+  }
+
+  .podcasts .wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .podcasts .right .btn {
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* End Podcast Page */
+
+  /* Post Page */
+  main.post>.row {
+    flex-direction: column;
+  }
+
+  main.post article {
+    max-width: 100%;
+    margin-left: unset;
+    margin-bottom: 20px;
+  }
+
+  .comment-form form {
+    width: 100%;
+  }
+
+  .reply {
+    width: 100%;
+    margin: 0px !important;
+  }
+
+  .reply .comment-title {
+    max-width: 60px;
+  }
+
+  .comment-illustration {
+    display: none;
+  }
+
+  main.post aside.sidebar {
+    max-width: 100%;
+  }
+
+  /* End Post Page */
+}
+
+/* End Medium Tablet */
+
 /* Mobile */
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 479px) {
 
   body,
   html {
@@ -1105,6 +1255,7 @@ aside {
 
   .about .left {
     margin-right: 17px;
+    margin-left: unset;
   }
 
   .about .left img {
@@ -1220,6 +1371,7 @@ aside {
   .mic {
     width: 95px;
     height: 107px;
+    display: block;
   }
 
   .podcasts {
@@ -1356,6 +1508,7 @@ aside {
     min-height: unset;
     margin-bottom: 15px;
     margin-left: unset;
+    margin-right: unset;
   }
 
   .blog-posts .card:last-of-type {
@@ -1463,6 +1616,10 @@ aside {
     margin: 15px 15px 0px 15px;
   }
 
+  .comment-title {
+    max-width: 100px;
+  }
+
   .more-comment-btn {
     margin: 26px 0 26px 0;
   }
@@ -1546,3 +1703,15 @@ aside {
     line-height: 22px;
   }
 }
+
+/* End Mobile */
+
+/* Extra Small */
+@media screen and (max-width: 375px) and (min-width: 200px) {
+  .posts {
+    padding-top: 250px;
+    top: -270px;
+  }
+}
+
+/* End Extra Small */
