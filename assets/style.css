@@ -156,6 +156,7 @@ header {
   line-height: 47px;
   font-weight: 500;
   margin-bottom: 35px;
+  margin-top: 0px;
 }
 
 .hero .left {
@@ -267,7 +268,7 @@ header {
 
 /* Posts Section */
 .posts {
-  background-image: url("../images/Wave_Background.svg");
+  background-image: url("../images/Wave_Background.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   position: relative;
