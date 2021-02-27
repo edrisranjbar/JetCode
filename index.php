@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="left">
-            <img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/laptop_coding.png">
+            <img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/laptop_coding.svg">
         </div>
     </section>
     <section class="about">
@@ -93,21 +93,34 @@
         <h3 class="title">دوره های آموزشی</h3>
         <div class="glider-contain">
             <div class="glider">
-                <div class="slide">
-                    <img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/web_browsing.png">
-                </div>
-                <div class="slide">
-                    <img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/html5.png">
-                </div>
-                <div class="slide">
-                    <img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/linux.png">
-                </div>
-                <div class="slide">
-                    <img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/web_browsing.png">
-                </div>
-                <div class="slide">
-                    <img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/html5.png">
-                </div>
+                <?php
+                $args = array(
+                    'post_type' => 'tutorial'
+                );
+                $query = new WP_Query($args);
+                // The Loop
+                if ($query->have_posts()) {
+                    while ($query->have_posts()) {
+                        $query->the_post();
+                        $post_id = $query->get_the_ID();
+                ?>
+                        <div class="slide">
+                            <?php if (has_post_thumbnail($post_id)) {
+                                $thumbnail = get_the_post_thumbnail_url($post_id);
+                            } else {
+                                $thumbnail = get_template_directory_uri() . "/assets/images/no-thumbnail.png";
+                            } ?>
+                            <img src="<?php echo $thumbnail; ?>" alt="<?php echo get_the_title(); ?>">
+                        </div>
+                <?php
+                    }
+                } else {
+                    // no tutorial found
+                    echo "<h3 class='text-center text-orange m-0'>دوره ای یافت نشد</h3>";
+                }
+                /* Restore original Post Data */
+                wp_reset_postdata();
+                ?>
             </div>
             <div class="">
                 <div role="tablist" class="dots"></div>

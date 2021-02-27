@@ -35,11 +35,52 @@ function JetCode_get_menu_items($menu_name)
 function JetCode_theme_support()
 {
     add_theme_support('title-tag');
+    add_theme_support('custom-logo');
     add_theme_support('post-thumbnails');
 }
 add_action('after_setup_theme', 'JetCode_theme_support');
 
-// customize the excerpt
+// Add Tutorial post type
+function JetCode_setup_tutorial_post_type()
+{
+    $args = array(
+        'public'    => true,
+        'label'     => __('دوره ها', 'textdomain'),
+        'menu_icon' => 'dashicons-welcome-learn-more',
+        'menu_position' => 5,
+        'supports'      => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
+        'labels' => [
+            'name'                  => _x('دوره ها', 'Post type general name', 'textdomain'),
+            'singular_name'         => _x('دوره', 'Post type singular name', 'textdomain'),
+            'menu_name'             => _x('دوره ها', 'Admin Menu text', 'textdomain'),
+            'name_admin_bar'        => _x('دوره', 'Add New on Toolbar', 'textdomain'),
+            'add_new'               => __('افزودن', 'textdomain'),
+            'add_new_item'          => __('افزودن دوره جدید', 'textdomain'),
+            'new_item'              => __('دوره جدید', 'textdomain'),
+            'edit_item'             => __('ویرایش دوره', 'textdomain'),
+            'view_item'             => __('نمایش دوره', 'textdomain'),
+            'all_items'             => __('همه دوره ها', 'textdomain'),
+            'search_items'          => __('جست و جوی دوره ها', 'textdomain'),
+            'parent_item_colon'     => __('دوره های والد:', 'textdomain'),
+            'not_found'             => __('دوره ای یافت نشد!', 'textdomain'),
+            'not_found_in_trash'    => __('دوره ای در سطل زباله یافت نشد!', 'textdomain'),
+            'featured_image'        => _x('تصویر کاور دوره', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'textdomain'),
+            'set_featured_image'    => _x('تنظیم تصویر دوره', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'textdomain'),
+            'remove_featured_image' => _x('حذف کاور دوره', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'textdomain'),
+            'use_featured_image'    => _x('استفاده از یک تصویر برای دوره', 'Overrides the “Use as featured image” phrase for this post type. Added in 4.3', 'textdomain'),
+            'archives'              => _x('Book archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'textdomain'),
+            'insert_into_item'      => _x('Insert into book', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'textdomain'),
+            'uploaded_to_this_item' => _x('Uploaded to this book', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'textdomain'),
+            'filter_items_list'     => _x('فیلتر لیست دوره ها', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'textdomain'),
+            'items_list_navigation' => _x('Books list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'textdomain'),
+            'items_list'            => _x('لیست دوره ها', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'textdomain'),
+        ],
+    );
+    register_post_type('tutorial', $args);
+}
+add_action('init', 'JetCode_setup_tutorial_post_type');
+
+// Customize the excerpt
 function JetCode_custom_excerpt_length($length)
 {
     return ($length <= 40) ? $length : 40;

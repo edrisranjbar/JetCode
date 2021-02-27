@@ -60,6 +60,14 @@ body {
   justify-content: center;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.m-0 {
+  margin: 0px;
+}
+
 .header_bg {
   position: absolute;
   width: 100%;
@@ -295,11 +303,6 @@ header {
   color: var(--dark);
   text-align: center;
 }
-
-/* .posts .wrapper:first-of-type {
-  justify-content: flex-start;
-  padding-right: 15px;
-} */
 
 .posts .wrapper,
 .blog-posts .wrapper {
