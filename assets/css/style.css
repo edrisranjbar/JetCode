@@ -255,6 +255,7 @@ header {
 .about .right {
   padding-right: 46px;
   position: relative;
+  z-index: 1;
 }
 
 .about .title {

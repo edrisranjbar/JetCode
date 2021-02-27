@@ -157,6 +157,43 @@ if (!class_exists('WPEX_Theme_Options')) {
                     unset($options['hero_second_link_text']);
                 }
 
+                // About Section
+                if (!empty($options['about_title'])) {
+                    $options['about_title'] = sanitize_text_field($options['about_title']);
+                } else {
+                    unset($options['about_title']);
+                }
+                if (!empty($options['about_description'])) {
+                    $options['about_description'] = sanitize_text_field($options['about_description']);
+                } else {
+                    unset($options['about_description']);
+                }
+                if (!empty($options['instagram'])) {
+                    $options['instagram'] = sanitize_text_field($options['instagram']);
+                } else {
+                    unset($options['instagram']);
+                }
+                if (!empty($options['twitter'])) {
+                    $options['twitter'] = sanitize_text_field($options['twitter']);
+                } else {
+                    unset($options['twitter']);
+                }
+                if (!empty($options['email'])) {
+                    $options['email'] = sanitize_text_field($options['email']);
+                } else {
+                    unset($options['email']);
+                }
+                if (!empty($options['linkedin'])) {
+                    $options['linkedin'] = sanitize_text_field($options['linkedin']);
+                } else {
+                    unset($options['linkedin']);
+                }
+                if (!empty($options['github'])) {
+                    $options['github'] = sanitize_text_field($options['github']);
+                } else {
+                    unset($options['github']);
+                }
+
                 // Select
                 if (!empty($options['select_example'])) {
                     $options['select_example'] = sanitize_text_field($options['select_example']);
@@ -177,8 +214,6 @@ if (!class_exists('WPEX_Theme_Options')) {
                     <?php settings_fields('theme_options'); ?>
 
                     <table class="form-table wpex-custom-admin-login-table">
-
-
                         <tr valign="top">
                             <th scope="row"><?php esc_html_e('Checkbox Example', 'text-domain'); ?></th>
                             <td>
@@ -186,20 +221,23 @@ if (!class_exists('WPEX_Theme_Options')) {
                                 <input type="checkbox" name="theme_options[checkbox_example]" <?php checked($value, 'on'); ?>> <?php esc_html_e('Checkbox example description.', 'text-domain'); ?>
                             </td>
                         </tr>
+                    </table>
 
-
+                    <!-- Hero Section -->
+                    <table class="form-table wpex-custom-admin-login-table">
+                        <caption>قسمت هیرو</caption>
                         <tr valign="top">
-                            <th scope="row"><?php esc_html_e('عنوان قسمت هیرو', 'text-domain'); ?></th>
+                            <th scope="row"><?php esc_html_e('عنوان', 'text-domain'); ?></th>
                             <td>
                                 <?php $value = self::get_theme_option('hero_title'); ?>
                                 <input type="text" name="theme_options[hero_title]" value="<?php echo esc_attr($value); ?>">
                             </td>
                         </tr>
                         <tr valign="top">
-                            <th scope="row"><?php esc_html_e('توضیحات قسمت هیرو', 'text-domain'); ?></th>
+                            <th scope="row"><?php esc_html_e('توضیحات', 'text-domain'); ?></th>
                             <td>
                                 <?php $value = self::get_theme_option('hero_description'); ?>
-                                <input type="text" name="theme_options[hero_description]" value="<?php echo esc_attr($value); ?>">
+                                <textarea name="theme_options[hero_description]"><?php echo esc_attr($value); ?></textarea>
                             </td>
                         </tr>
                         <tr valign="top">
@@ -230,7 +268,61 @@ if (!class_exists('WPEX_Theme_Options')) {
                                 <input type="url" name="theme_options[hero_second_link]" value="<?php echo esc_attr($value); ?>">
                             </td>
                         </tr>
-
+                    </table>
+                    <!-- About Section -->
+                    <table class="form-table wpex-custom-admin-login-table">
+                        <caption>درباره ما</caption>
+                        <tr valign="top">
+                            <th scope="row"><?php esc_html_e('عنوان درباره ما', 'text-domain'); ?></th>
+                            <td>
+                                <?php $value = self::get_theme_option('about_title'); ?>
+                                <input type="text" name="theme_options[about_title]" value="<?php echo esc_attr($value); ?>">
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php esc_html_e('توضیحات درباره ما', 'text-domain'); ?></th>
+                            <td>
+                                <?php $value = self::get_theme_option('about_description'); ?>
+                                <textarea name="theme_options[about_description]"><?php echo esc_attr($value); ?></textarea>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php esc_html_e('اینستاگرام', 'text-domain'); ?></th>
+                            <td>
+                                <?php $value = self::get_theme_option('instagram'); ?>
+                                <input type="url" name="theme_options[instagram]" value="<?php echo esc_attr($value); ?>">
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php esc_html_e('توییتر', 'text-domain'); ?></th>
+                            <td>
+                                <?php $value = self::get_theme_option('twitter'); ?>
+                                <input type="url" name="theme_options[twitter]" value="<?php echo esc_attr($value); ?>">
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php esc_html_e('ایمیل', 'text-domain'); ?></th>
+                            <td>
+                                <?php $value = self::get_theme_option('email'); ?>
+                                <input type="url" name="theme_options[email]" value="<?php echo esc_attr($value); ?>">
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php esc_html_e('لینکدین', 'text-domain'); ?></th>
+                            <td>
+                                <?php $value = self::get_theme_option('linkedin'); ?>
+                                <input type="url" name="theme_options[linkedin]" value="<?php echo esc_attr($value); ?>">
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php esc_html_e('گیت هاب', 'text-domain'); ?></th>
+                            <td>
+                                <?php $value = self::get_theme_option('github'); ?>
+                                <input type="url" name="theme_options[github]" value="<?php echo esc_attr($value); ?>">
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="form-table wpex-custom-admin-login-table">
                         <tr valign="top" class="wpex-custom-admin-screen-background-section">
                             <th scope="row"><?php esc_html_e('Select Example', 'text-domain'); ?></th>
                             <td>

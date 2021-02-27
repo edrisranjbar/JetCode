@@ -10,28 +10,30 @@
             </div>
         </div>
         <div class="left">
-            <img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/laptop_coding.svg">
+            <img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/laptop_coding.png">
         </div>
     </section>
     <section class="about">
         <div class="right">
             <div class="circle"></div>
-            <h2 class="title">درباره ادریس رنجبر</h2>
-            <p class="description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان
-                گرافیک است، چاپگرها و متون بلکه
-                روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
-                متنوع با هدف بهبود
-                ابزار</p>
+            <h2 class="title"><?php echo JetCode_get_theme_option('about_title'); ?></h2>
+            <p class="description"><?php echo JetCode_get_theme_option('about_description'); ?></p>
             <div class="icons">
-                <a target="_blank" href="http://instagram.com/edrisranjbar">
-                    <img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/Instagram.svg" alt="Instagram">
+                <a target="_blank" href="<?php echo JetCode_get_theme_option('instagram'); ?>">
+                    <img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/Instagram.png" alt="Instagram">
                 </a>
-                <a target="_blank" href="https://twitter.com/edris__ranjbar">
-                    <img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/Twitter.svg" alt="Twitter">
+                <a target="_blank" href="<?php echo JetCode_get_theme_option('twitter'); ?>">
+                    <img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/Twitter.png" alt="Twitter">
                 </a>
-                <a target="_blank" href="mailto:edris.qeshm2@gmail.com"><img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/Email.svg" alt="Email"></a>
-                <a target="_blank" href="https://linkedin.com/in/edris-ranjbar"><img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/Linkedin.svg" alt="Linkedin"></a>
-                <a target="_blank" href="https://github.com/edrisranjbar"><img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/GitHub.svg" alt="GitHub"></a>
+                <a target="_blank" href="<?php echo JetCode_get_theme_option('email'); ?>">
+                    <img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/Email.png" alt="Email">
+                </a>
+                <a target="_blank" href="<?php echo JetCode_get_theme_option('linkedin'); ?>">
+                    <img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/Linkedin.png" alt="Linkedin">
+                </a>
+                <a target="_blank" href="<?php echo JetCode_get_theme_option('github'); ?>">
+                    <img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/GitHub.png" alt="GitHub">
+                </a>
             </div>
         </div>
         <div class="left">
