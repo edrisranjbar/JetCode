@@ -93,7 +93,7 @@ header {
   background-color: var(--gray);
 }
 
-.logo {
+.custom-logo {
   height: 50px;
   width: 50px;
 }
@@ -1183,7 +1183,7 @@ aside {
     display: block;
   }
 
-  .logo {
+  .custom-logo {
     align-self: flex-end;
     margin: 15px;
   }

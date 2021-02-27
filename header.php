@@ -15,7 +15,10 @@
             <div class="bar"></div>
         </span>
         <nav class="menu">
-            <img src="<?php echo get_template_directory_uri() . '/assets/' ?>images/Logo.png" alt="JetCode logo" class="logo">
+            <?php if (function_exists('the_custom_logo')) {
+                the_custom_logo();
+            }
+            ?>
             <?php
             echo JetCode_get_menu_items('primary');
             ?>
