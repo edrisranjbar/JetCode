@@ -2,11 +2,11 @@
 <main>
     <section class="hero">
         <div class="right">
-            <h2 class="title">به دنیای برنامه نویسی خوش آمدید</h2>
-            <p class="subtitle">کجا بهتر از اینجا برای شروع یادگیری، رایگان و آزاد</p>
+            <h2 class="title"><?php echo JetCode_get_theme_option('hero_title'); ?></h2>
+            <p class="subtitle"><?php echo JetCode_get_theme_option('hero_description'); ?></p>
             <div class="row justify-center">
-                <button class="btn btn-secondary-outline">وبلاگ</button>
-                <button class="btn btn-primary">یادگیری رو شروع کن!</button>
+                <a href="<?php echo JetCode_get_theme_option('hero_first_link'); ?>" class="btn btn-secondary-outline"><?php echo JetCode_get_theme_option('hero_first_link_text'); ?></a>
+                <a href="<?php echo JetCode_get_theme_option('hero_second_link'); ?>" class="btn btn-primary"><?php echo JetCode_get_theme_option('hero_second_link_text'); ?></a>
             </div>
         </div>
         <div class="left">
