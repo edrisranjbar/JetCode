@@ -1,4 +1,9 @@
 <?php
+// Exit if accessed directly
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 // Add menu
 function JetCode_menu()
 {
@@ -63,3 +68,202 @@ function JetCode_register_scripts()
     wp_enqueue_script('JetCode_glider_script', get_template_directory_uri() . "/assets/js/glider.min.js", [], '1.0', true);
 }
 add_action('wp_enqueue_scripts', 'JetCode_register_scripts');
+
+// Wordpress Theme customization panel
+if (!class_exists('WPEX_Theme_Options')) {
+    class WPEX_Theme_Options
+    {
+        public function __construct()
+        {
+
+            // We only need to register the admin panel on the back-end
+            if (is_admin()) {
+                add_action('admin_menu', array('WPEX_Theme_Options', 'add_admin_menu'));
+                add_action('admin_init', array('WPEX_Theme_Options', 'register_settings'));
+            }
+        }
+        public static function get_theme_options()
+        {
+            return get_option('theme_options');
+        }
+        public static function get_theme_option($id)
+        {
+            $options = self::get_theme_options();
+            if (isset($options[$id])) {
+                return $options[$id];
+            }
+        }
+        public static function add_admin_menu()
+        {
+            add_menu_page(
+                esc_html__('Theme Settings', 'text-domain'),
+                esc_html__('تنظیمات قالب', 'text-domain'),
+                'manage_options',
+                'theme-settings',
+                array('WPEX_Theme_Options', 'create_admin_page')
+            );
+        }
+        public static function register_settings()
+        {
+            register_setting('theme_options', 'theme_options', array('WPEX_Theme_Options', 'sanitize'));
+        }
+
+        /**
+         * Sanitization callback
+         *
+         * @since 1.0.0
+         */
+        public static function sanitize($options)
+        {
+            // If we have options lets sanitize them
+            if ($options) {
+
+                // Checkbox
+                if (!empty($options['checkbox_example'])) {
+                    $options['checkbox_example'] = 'on';
+                } else {
+                    unset($options['checkbox_example']); // Remove from options if not checked
+                }
+
+                // Hero Section
+                if (!empty($options['hero_title'])) {
+                    $options['hero_title'] = sanitize_text_field($options['hero_title']);
+                } else {
+                    unset($options['hero_title']);
+                }
+                if (!empty($options['hero_description'])) {
+                    $options['hero_description'] = sanitize_text_field($options['hero_description']);
+                } else {
+                    unset($options['hero_description']);
+                }
+                if (!empty($options['hero_first_link'])) {
+                    $options['hero_first_link'] = sanitize_text_field($options['hero_first_link']);
+                } else {
+                    unset($options['hero_first_link']);
+                }
+                if (!empty($options['hero_first_link_text'])) {
+                    $options['hero_first_link_text'] = sanitize_text_field($options['hero_first_link_text']);
+                } else {
+                    unset($options['hero_first_link_text']);
+                }
+                if (!empty($options['hero_second_link'])) {
+                    $options['hero_second_link'] = sanitize_text_field($options['hero_second_link']);
+                } else {
+                    unset($options['hero_second_link']);
+                }
+                if (!empty($options['hero_second_link_text'])) {
+                    $options['hero_second_link_text'] = sanitize_text_field($options['hero_second_link_text']);
+                } else {
+                    unset($options['hero_second_link_text']);
+                }
+
+                // Select
+                if (!empty($options['select_example'])) {
+                    $options['select_example'] = sanitize_text_field($options['select_example']);
+                }
+            }
+            // Return sanitized options
+            return $options;
+        }
+        public static function create_admin_page()
+        { ?>
+
+            <div class="wrap">
+
+                <h1><?php esc_html_e('تنظیمات قالب', 'text-domain'); ?></h1>
+
+                <form method="post" action="options.php">
+
+                    <?php settings_fields('theme_options'); ?>
+
+                    <table class="form-table wpex-custom-admin-login-table">
+
+
+                        <tr valign="top">
+                            <th scope="row"><?php esc_html_e('Checkbox Example', 'text-domain'); ?></th>
+                            <td>
+                                <?php $value = self::get_theme_option('checkbox_example'); ?>
+                                <input type="checkbox" name="theme_options[checkbox_example]" <?php checked($value, 'on'); ?>> <?php esc_html_e('Checkbox example description.', 'text-domain'); ?>
+                            </td>
+                        </tr>
+
+
+                        <tr valign="top">
+                            <th scope="row"><?php esc_html_e('عنوان قسمت هیرو', 'text-domain'); ?></th>
+                            <td>
+                                <?php $value = self::get_theme_option('hero_title'); ?>
+                                <input type="text" name="theme_options[hero_title]" value="<?php echo esc_attr($value); ?>">
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php esc_html_e('توضیحات قسمت هیرو', 'text-domain'); ?></th>
+                            <td>
+                                <?php $value = self::get_theme_option('hero_description'); ?>
+                                <input type="text" name="theme_options[hero_description]" value="<?php echo esc_attr($value); ?>">
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php esc_html_e('متن لینک اول', 'text-domain'); ?></th>
+                            <td>
+                                <?php $value = self::get_theme_option('hero_first_link_text'); ?>
+                                <input type="text" name="theme_options[hero_first_link_text]" value="<?php echo esc_attr($value); ?>">
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php esc_html_e('لینک اول', 'text-domain'); ?></th>
+                            <td>
+                                <?php $value = self::get_theme_option('hero_first_link'); ?>
+                                <input type="url" name="theme_options[hero_first_link]" value="<?php echo esc_attr($value); ?>">
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php esc_html_e('متن لینک دوم', 'text-domain'); ?></th>
+                            <td>
+                                <?php $value = self::get_theme_option('hero_second_link_text'); ?>
+                                <input type="text" name="theme_options[hero_second_link_text]" value="<?php echo esc_attr($value); ?>">
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php esc_html_e('لینک دوم', 'text-domain'); ?></th>
+                            <td>
+                                <?php $value = self::get_theme_option('hero_second_link'); ?>
+                                <input type="url" name="theme_options[hero_second_link]" value="<?php echo esc_attr($value); ?>">
+                            </td>
+                        </tr>
+
+                        <tr valign="top" class="wpex-custom-admin-screen-background-section">
+                            <th scope="row"><?php esc_html_e('Select Example', 'text-domain'); ?></th>
+                            <td>
+                                <?php $value = self::get_theme_option('select_example'); ?>
+                                <select name="theme_options[select_example]">
+                                    <?php
+                                    $options = array(
+                                        '1' => esc_html__('Option 1', 'text-domain'),
+                                        '2' => esc_html__('Option 2', 'text-domain'),
+                                        '3' => esc_html__('Option 3', 'text-domain'),
+                                    );
+                                    foreach ($options as $id => $label) { ?>
+                                        <option value="<?php echo esc_attr($id); ?>" <?php selected($value, $id, true); ?>>
+                                            <?php echo strip_tags($label); ?>
+                                        </option>
+                                    <?php } ?>
+                                </select>
+                            </td>
+                        </tr>
+
+                    </table>
+
+                    <?php submit_button(); ?>
+
+                </form>
+
+            </div><!-- .wrap -->
+<?php }
+    }
+}
+new WPEX_Theme_Options();
+// Helper function to use in your theme to return a theme option value
+function JetCode_get_theme_option($id = '')
+{
+    return WPEX_Theme_Options::get_theme_option($id);
+}
