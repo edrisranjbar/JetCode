@@ -58,9 +58,11 @@
                             $thumbnail = get_template_directory_uri() . "/assets/images/no-thumbnail.png";
                         }
                         ?>
-                        <img src='<?= $thumbnail ?>' class='thumbnail'>
+                        <a href="<?php echo get_the_permalink(); ?>"><img src='<?= $thumbnail ?>' class='thumbnail' alt="<?php the_title(); ?>" title="<?php the_title(); ?>"></a>
                         <div class='card-body'>
-                            <h4 class='card-title'><?php the_title(); ?></h4>
+                            <a href="<?php echo get_the_permalink(); ?>">
+                                <h4 class='card-title'><?php the_title(); ?></h4>
+                            </a>
                             <?php
                             $post_categories = wp_get_post_categories($post_id);
                             $category_counter = 1;
@@ -104,14 +106,17 @@
                         $query->the_post();
                         $post_id = $query->get_the_ID();
                 ?>
-                        <div class="slide">
-                            <?php if (has_post_thumbnail($post_id)) {
-                                $thumbnail = get_the_post_thumbnail_url($post_id);
-                            } else {
-                                $thumbnail = get_template_directory_uri() . "/assets/images/no-thumbnail.png";
-                            } ?>
-                            <img src="<?php echo $thumbnail; ?>" alt="<?php echo get_the_title(); ?>">
-                        </div>
+                        <a href="<?php echo get_the_permalink(); ?>">
+                            <div class="slide">
+                                <?php if (has_post_thumbnail($post_id)) {
+                                    $thumbnail = get_the_post_thumbnail_url($post_id);
+                                } else {
+                                    $thumbnail = get_template_directory_uri() . "/assets/images/no-thumbnail.png";
+                                } ?>
+
+                                <img src="<?php echo $thumbnail; ?>" alt="<?php echo get_the_title(); ?>">
+                            </div>
+                        </a>
                 <?php
                     }
                 } else {

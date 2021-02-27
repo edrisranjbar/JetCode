@@ -1,5 +1,5 @@
 <footer>
-    <p>تمامی حقوق برای وب سایت ادریس رنجبر محفوط می باشد.</p>
+    <?php echo JetCode_footer_copyright(); ?>
     <p>طراحی و توسعه با ☕ و ❤️ توسط ادریس رنجبر</p>
 </footer>
 <?php wp_footer(); ?>

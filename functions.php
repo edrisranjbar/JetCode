@@ -400,3 +400,11 @@ function JetCode_get_theme_option($id = '')
 {
     return WPEX_Theme_Options::get_theme_option($id);
 }
+
+// Footer
+function JetCode_footer_copyright()
+{
+    $site_name = get_bloginfo('name');
+    $site_url = get_bloginfo('url');
+    return "<p>تمامی حقوق برای وب سایت <a href='$site_url'>$site_name</a> محفوظ است.</p>";
+}
