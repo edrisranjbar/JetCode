@@ -59,27 +59,31 @@ categories.forEach((element) => {
 });
 
 // Swipe up blog hero section
-let swipe = new Swipe('.handler-line');
-swipe.onUp(() => {
-    console.log("Moved Up")
-    blog_hero.style.marginTop = "-385px";
-    window.setTimeout(() => {
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: 'smooth'
-        });
-    }, 500)
-});
-swipe.onDown(() => {
-    console.log("Moved Down")
-    blog_hero.style.marginTop = "-68px";
-});
-swipe.run();
-
+try {
+    let swipe = new Swipe('.handler-line');
+    swipe.onUp(() => {
+        console.log("Moved Up")
+        blog_hero.style.marginTop = "-385px";
+        window.setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+        }, 500)
+    });
+    swipe.onDown(() => {
+        console.log("Moved Down")
+        blog_hero.style.marginTop = "-68px";
+    });
+    swipe.run();
+} catch (err) {
+    console.error(err);
+}
 // Light mode in blog page
-is_blog = document.querySelectorAll('main.blog').length;
-if (is_blog > 0) {
+is_blog_page = document.querySelectorAll('main.blog').length;
+is_tag_page = document.querySelectorAll('main.tag').length;
+if (is_blog_page > 0 || is_tag_page > 0) {
     body.classList.remove('bg-dark');
     body.classList.add('bg-light');
 }
