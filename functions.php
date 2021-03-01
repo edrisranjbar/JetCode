@@ -105,8 +105,9 @@ add_action('wp_enqueue_scripts', 'JetCode_register_styles');
 function JetCode_register_scripts()
 {
     $version = wp_get_theme()->get('Version');
-    wp_enqueue_script('JetCode_script', get_template_directory_uri() . "/assets/js/script.js", ['JetCode_glider_script'], $version, true);
+    wp_enqueue_script('JetCode_script', get_template_directory_uri() . "/assets/js/script.js", ['JetCode_glider_script', 'JetCode_swipe_script'], $version, true);
     wp_enqueue_script('JetCode_glider_script', get_template_directory_uri() . "/assets/js/glider.min.js", [], '1.0', true);
+    wp_enqueue_script('JetCode_swipe_script', get_template_directory_uri() . "/assets/js/swipe.js", [], '1.0', true);
 }
 add_action('wp_enqueue_scripts', 'JetCode_register_scripts');
 
@@ -233,6 +234,23 @@ if (!class_exists('WPEX_Theme_Options')) {
                     $options['github'] = sanitize_text_field($options['github']);
                 } else {
                     unset($options['github']);
+                }
+
+                // Podcast
+                if (!empty($options['podcast_title'])) {
+                    $options['podcast_title'] = sanitize_text_field($options['podcast_title']);
+                } else {
+                    unset($options['podcast_title']);
+                }
+                if (!empty($options['podcast_description'])) {
+                    $options['podcast_description'] = sanitize_text_field($options['podcast_description']);
+                } else {
+                    unset($options['podcast_description']);
+                }
+                if (!empty($options['podcast_frame'])) {
+                    $options['podcast_frame'] = sanitize_text_field($options['podcast_frame']);
+                } else {
+                    unset($options['podcast_frame']);
                 }
 
                 // Select
@@ -363,6 +381,33 @@ if (!class_exists('WPEX_Theme_Options')) {
                             </td>
                         </tr>
                     </table>
+
+                    <!-- Podcasts -->
+                    <table class="form-table wpex-custom-admin-login-table">
+                        <caption>پادکست ها</caption>
+                        <tr valign="top">
+                            <th scope="row"><?php esc_html_e('عنوان', 'text-domain'); ?></th>
+                            <td>
+                                <?php $value = self::get_theme_option('podcast-title'); ?>
+                                <input name="theme_options[podcast-title]" value="<?php echo esc_attr($value); ?>">
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php esc_html_e('توضیحات', 'text-domain'); ?></th>
+                            <td>
+                                <?php $value = self::get_theme_option('podcast-description'); ?>
+                                <textarea name="theme_options[podcast-description]"><?php echo esc_attr($value); ?></textarea>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php esc_html_e('لینک آی فریم پادکست', 'text-domain'); ?></th>
+                            <td>
+                                <?php $value = self::get_theme_option('podcast-frame'); ?>
+                                <input type="url" name="theme_options[podcast-frame]" value="<?php echo esc_attr($value); ?>">
+                            </td>
+                        </tr>
+                    </table>
+
                     <table class="form-table wpex-custom-admin-login-table">
                         <tr valign="top" class="wpex-custom-admin-screen-background-section">
                             <th scope="row"><?php esc_html_e('Select Example', 'text-domain'); ?></th>
@@ -408,3 +453,6 @@ function JetCode_footer_copyright()
     $site_url = get_bloginfo('url');
     return "<p>تمامی حقوق برای وب سایت <a href='$site_url'>$site_name</a> محفوظ است.</p>";
 }
+
+require_once("includes/texonomy_images.php");
+require_once(WP_PLUGIN_DIR . "/wp-statistics" . "/includes/template-functions.php");

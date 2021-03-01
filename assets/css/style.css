@@ -659,7 +659,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 25px;
   line-height: 47px;
   font-weight: bold;
   color: var(--white);

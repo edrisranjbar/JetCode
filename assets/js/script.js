@@ -76,3 +76,39 @@ swipe.onDown(() => {
     blog_hero.style.marginTop = "-68px";
 });
 swipe.run();
+
+// Light mode in blog page
+is_blog = document.querySelectorAll('main.blog').length;
+if (is_blog > 0) {
+    body.classList.remove('bg-dark');
+    body.classList.add('bg-light');
+}
+
+// Order by form submision
+let orderby = document.querySelector('#orderby');
+orderby.addEventListener('change', (e) => {
+    if (orderby.value == "views") {
+        sortBy("views");
+    } else {
+        orderby.parentElement.submit();
+    }
+})
+
+function sortBy(query) {
+    if (query = "views") {
+        let views = [];
+        document.querySelectorAll('.blog-posts .card .views span').forEach((elem) => {
+            views.push(elem.innerHTML)
+        });
+        let posts = document.querySelectorAll('.blog-posts .card');
+
+        // sort posts
+        for (let i = 0; i < views.length; i++) {
+            if (Number(views[i]) < Number(views[i + 1])) {
+                posts[i].parentElement.appendChild(posts[i]);
+                views.push(views.splice(i, 1)[0]);
+                sortBy(query);
+            }
+        }
+    }
+}
