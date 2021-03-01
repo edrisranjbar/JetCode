@@ -83,7 +83,8 @@ try {
 // Light mode in blog page
 is_blog_page = document.querySelectorAll('main.blog').length;
 is_tag_page = document.querySelectorAll('main.tag').length;
-if (is_blog_page > 0 || is_tag_page > 0) {
+is_category_page = document.querySelectorAll('main.category').length;
+if (is_blog_page > 0 || is_tag_page > 0 || is_category_page > 0) {
     body.classList.remove('bg-dark');
     body.classList.add('bg-light');
 }
