@@ -3,6 +3,16 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+require_once("includes/recent_posts.php");
+require_once("includes/texonomy_images.php");
+require_once(WP_PLUGIN_DIR . "/wp-statistics" . "/includes/template-functions.php");
+
+// Add custom widgets
+function JetCode_register_custom_widgets()
+{
+    register_widget('JetCode_Widget_Recent_Posts');
+}
+add_action('widgets_init', 'JetCode_register_custom_widgets');
 
 // Add menu
 function JetCode_menu()
@@ -446,6 +456,20 @@ function JetCode_get_theme_option($id = '')
     return WPEX_Theme_Options::get_theme_option($id);
 }
 
+
+// Sidebar widgets
+function JetCode_register_sidebars()
+{
+    register_sidebar([
+        'id'            => 'sidebar',
+        'name'          => __('ستون کناری', 'JetCode'),
+        'before_widget' => '<section class="widget">',
+        'after_widget'  => '</div></section>',
+        'before_title'  => '<div class="widget-title"><h3>',
+        'after_title'   => '</h3></div><div class="widget-body">',
+    ]);
+}
+add_action('widgets_init', 'JetCode_register_sidebars');
 // Footer
 function JetCode_footer_copyright()
 {
@@ -453,6 +477,3 @@ function JetCode_footer_copyright()
     $site_url = get_bloginfo('url');
     return "<p>تمامی حقوق برای وب سایت <a href='$site_url'>$site_name</a> محفوظ است.</p>";
 }
-
-require_once("includes/texonomy_images.php");
-require_once(WP_PLUGIN_DIR . "/wp-statistics" . "/includes/template-functions.php");

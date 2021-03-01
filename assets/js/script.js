@@ -85,20 +85,23 @@ is_blog_page = document.querySelectorAll('main.blog').length;
 is_tag_page = document.querySelectorAll('main.tag').length;
 is_category_page = document.querySelectorAll('main.category').length;
 is_search_results_page = document.querySelectorAll('main.search-results').length;
-if (is_blog_page > 0 || is_tag_page > 0 || is_category_page > 0 || is_search_results_page > 0) {
+is_singular = document.querySelectorAll('main.post').length;
+if (is_blog_page > 0 || is_tag_page > 0 || is_category_page > 0 || is_search_results_page > 0 || is_singular > 0) {
     body.classList.remove('bg-dark');
     body.classList.add('bg-light');
 }
 
 // Order by form submision
-let orderby = document.querySelector('#orderby');
-orderby.addEventListener('change', (e) => {
-    if (orderby.value == "views") {
-        sortBy("views");
-    } else {
-        orderby.parentElement.submit();
-    }
-})
+if (is_blog_page > 0 || is_tag_page > 0 || is_category_page > 0 || is_search_results_page > 0) {
+    let orderby = document.querySelector('#orderby');
+    orderby.addEventListener('change', (e) => {
+        if (orderby.value == "views") {
+            sortBy("views");
+        } else {
+            orderby.parentElement.submit();
+        }
+    })
+}
 
 function sortBy(query) {
     if (query = "views") {
@@ -116,5 +119,35 @@ function sortBy(query) {
                 sortBy(query);
             }
         }
+    }
+}
+
+// Load more comments
+let comments_count = document.querySelectorAll("ul>li.comment:not(.reply)").length;
+let more_comments_btn = document.querySelector('.more-comment-btn');
+let max_comments = 4;
+if (comments_count > max_comments) {
+    more_comments_btn.setAttribute("disabled", "false");
+} else {
+    more_comments_btn.setAttribute("disabled", "true");
+}
+// Limit displaying comments
+document.querySelectorAll(`ul>.comment:nth-child(-n+${max_comments})`).forEach(comments => {
+    comments.style.display = "initial";
+});
+
+more_comments_btn.addEventListener('click', () => {
+    max_comments += 4;
+    load_more_comments();
+});
+
+function load_more_comments() {
+    document.querySelectorAll(`ul>.comment:nth-child(-n+${max_comments})`).forEach(comments => {
+        comments.style.display = "initial";
+    });
+    if (comments_count > max_comments) {
+        more_comments_btn.setAttribute("disabled", "false");
+    } else {
+        more_comments_btn.setAttribute("disabled", "true");
     }
 }
