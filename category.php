@@ -13,8 +13,8 @@ get_header();
 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Folder.svg" class="blog-right-folder">
 <main class="category">
     <h1 class="title">
-        نتایج برچسب
-        <a href=""><span class="text-orange">#<?php single_tag_title(); ?></span></a>
+        نتایج دسته بندی
+        <a href=""><span class="text-orange"><?php single_tag_title(); ?></span></a>
     </h1>
     <div class="order-by-box">
         <form action="<?php echo  $current_url; ?>" method="GET">
