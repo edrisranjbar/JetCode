@@ -21,7 +21,7 @@ $post_id = get_the_ID();
         $post_categories = wp_get_post_categories($post_id);
         $category_counter = 1;
         foreach ($post_categories as $category) {
-            if ($category_counter++ > 2) {
+            if ($category_counter++ > 1) {
                 break;
             }
             $this_category = get_category($category);

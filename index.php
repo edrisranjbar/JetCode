@@ -61,7 +61,7 @@
             &nbsp;
         </div>
         <div class="wrapper">
-            <button class="btn btn-secondary">رفتن به وبلاگ</button>
+            <a href="<?php echo JetCode_get_theme_option('hero_first_link'); ?>" class="btn btn-secondary">رفتن به وبلاگ</a>
         </div>
     </section>
     <section class="tutorials">

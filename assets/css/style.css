@@ -1246,6 +1246,7 @@ aside {
   .btn-secondary {
     font-size: 16px;
     line-height: 25px;
+    margin-top: 20px;
   }
 
   .btn-primary {
@@ -1336,7 +1337,6 @@ aside {
   .card .thumbnail,
   .card .overlay {
     height: 189px;
-    border-radius: 10px;
   }
 
   .card-title {
@@ -1703,6 +1703,17 @@ aside {
   .search-results .card .card-header,
   .blog .card .card-header {
     height: 189px;
+  }
+
+  .category .card .thumbnail,
+  .category .card .overlay,
+  .tag .card .thumbnail,
+  .tag .card .overlay,
+  .search-results .card .thumbnail,
+  .search-results .card .overlay,
+  .blog .card .thumbnail,
+  .blog .card .overlay {
+    border-radius: 10px;
   }
 
   .category .card .card-body,
