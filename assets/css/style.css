@@ -97,6 +97,11 @@ header {
   background-color: var(--gray);
 }
 
+.custom-logo-link {
+  align-self: flex-end;
+  margin-top: 0px !important;
+}
+
 .custom-logo {
   height: 50px;
   width: 50px;
@@ -350,7 +355,7 @@ header {
   color: var(--white);
   position: absolute;
   right: 10px;
-  top: 170px;
+  bottom: 0px;
   margin-left: 10px;
   font-size: 24px;
   line-height: 37px;
@@ -365,6 +370,11 @@ header {
   line-height: 25px;
   border-radius: 10px;
   color: var(--dark80);
+}
+
+.card-header {
+  position: relative;
+  width: 100%;
 }
 
 .card-body {
@@ -1204,7 +1214,6 @@ aside {
   }
 
   .custom-logo {
-    align-self: flex-end;
     margin: 15px;
   }
 
@@ -1317,7 +1326,7 @@ aside {
   }
 
   .posts .card {
-    min-height: 404px;
+    min-height: 440px;
     width: 251px;
     margin-left: 15px;
     margin-bottom: 0px;
@@ -1541,7 +1550,7 @@ aside {
 
   .blog-posts .card {
     width: 251px;
-    min-height: unset;
+    min-height: 189px;
     margin-bottom: 15px;
     margin-left: unset;
     margin-right: unset;
@@ -1552,8 +1561,7 @@ aside {
   }
 
   .blog-posts .card a {
-    position: absolute;
-    top: 5px;
+    width: 100%;
   }
 
   .blog-posts .card .card-body a:nth-child(2) {
@@ -1566,7 +1574,7 @@ aside {
 
   .blog-posts .card .thumbnail,
   .blog-posts .card .overlay {
-    height: 100%;
+    height: 189px;
   }
 
   .blog-posts .card .card-description,
@@ -1688,6 +1696,21 @@ aside {
     top: 5px;
     width: 66.47px;
     height: 58.44px;
+  }
+
+  .category .card .card-header,
+  .tag .card .card-header,
+  .search-results .card .card-header,
+  .blog .card .card-header {
+    height: 189px;
+  }
+
+  .category .card .card-body,
+  .tag .card .card-body,
+  .search-results .card .card-body,
+  .blog .card .card-body {
+    position: absolute;
+    top: 0px;
   }
 
   .category .title,
