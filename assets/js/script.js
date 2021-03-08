@@ -131,17 +131,21 @@ let max_comments = 4;
 if (comments_count > max_comments) {
     more_comments_btn.setAttribute("disabled", "false");
 } else {
-    more_comments_btn.setAttribute("disabled", "true");
+    if (more_comments_btn !== null) {
+        more_comments_btn.setAttribute("disabled", "true");
+    }
 }
 // Limit displaying comments
 document.querySelectorAll(`ul>.comment:nth-child(-n+${max_comments})`).forEach(comments => {
     comments.style.display = "initial";
 });
 
-more_comments_btn.addEventListener('click', () => {
-    max_comments += 4;
-    load_more_comments();
-});
+if (more_comments_btn !== null) {
+    more_comments_btn.addEventListener('click', () => {
+        max_comments += 4;
+        load_more_comments();
+    });
+}
 
 function load_more_comments() {
     document.querySelectorAll(`ul>.comment:nth-child(-n+${max_comments})`).forEach(comments => {
