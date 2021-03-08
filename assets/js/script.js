@@ -96,6 +96,18 @@ if (is_blog_page > 0 || is_tag_page > 0 || is_category_page > 0 || is_search_res
     body.classList.add('bg-light');
 }
 
+// Define page type
+let page_type;
+if (is_blog_page > 0) {
+    page_type = "blog";
+} else if (is_tag_page > 0) {
+    page_type = "tag";
+} else if (is_category_page > 0) {
+    page_type = "category";
+} else if (is_search_results_page > 0) {
+    page_type = "search";
+}
+
 // Order by form submision
 if (is_blog_page > 0 || is_tag_page > 0 || is_category_page > 0 || is_search_results_page > 0) {
     let orderby = document.querySelector('#orderby');
@@ -103,7 +115,7 @@ if (is_blog_page > 0 || is_tag_page > 0 || is_category_page > 0 || is_search_res
         if (orderby.value == "views") {
             sortBy("views");
         } else {
-            orderby.parentElement.submit();
+            load_posts(true, orderby.value);
         }
     })
 }

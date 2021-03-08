@@ -115,9 +115,15 @@ add_action('wp_enqueue_scripts', 'JetCode_register_styles');
 function JetCode_register_scripts()
 {
     $version = wp_get_theme()->get('Version');
-    wp_enqueue_script('JetCode_script', get_template_directory_uri() . "/assets/js/script.js", ['JetCode_glider_script', 'JetCode_swipe_script'], $version, true);
+    wp_enqueue_script('JetCode_script', get_template_directory_uri() . "/assets/js/script.js", ['JetCode_more_posts_loader_script', 'JetCode_glider_script', 'JetCode_swipe_script'], $version, true);
     wp_enqueue_script('JetCode_glider_script', get_template_directory_uri() . "/assets/js/glider.min.js", [], '1.0', true);
     wp_enqueue_script('JetCode_swipe_script', get_template_directory_uri() . "/assets/js/swipe.js", [], '1.0', true);
+    wp_enqueue_script('JetCode_more_posts_loader_script', get_template_directory_uri() . "/assets/js/more_posts_loader.js", [], $version, true);
+
+    wp_localize_script('JetCode_more_posts_loader_script', 'ajax_posts', array(
+        'ajaxurl' => admin_url('admin-ajax.php'),
+        'noposts' => __('No older posts found', 'JetCode'),
+    ));
 }
 add_action('wp_enqueue_scripts', 'JetCode_register_scripts');
 
@@ -477,3 +483,69 @@ function JetCode_footer_copyright()
     $site_url = get_bloginfo('url');
     return "<p>تمامی حقوق برای وب سایت <a href='$site_url'>$site_name</a> محفوظ است.</p>";
 }
+
+function more_post_ajax()
+{
+    $orderby_allowed_list = ['modified', 'date'];
+    $orderby = "modified";
+    if (isset($_POST['orderby']) && in_array($_POST['orderby'], $orderby_allowed_list)) {
+        $orderby = $_POST['orderby'];
+    }
+    $ppp = (isset($_POST["ppp"])) ? $_POST["ppp"] : 4;
+    $page = (isset($_POST['pageNumber'])) ? $_POST['pageNumber'] : 2;
+    $type =  (isset($_POST['page_type'])) ? $_POST['page_type'] : "blog";
+    $tag_title = (isset($_POST['tag_title'])) ? $_POST['tag_title'] : "";
+    header("Content-Type: text/html");
+
+    if ($type == "blog") {
+        $args = array(
+            'suppress_filters' => true,
+            'post_type'         => 'post',
+            'post_status'       => 'publish',
+            'orderby'           => $orderby,
+            'posts_per_page' => $ppp * $page,
+        );
+        $query = new WP_Query($args);
+    } elseif ($type == "tag") {
+        $args = array(
+            'tag'       => $tag_title,
+            'suppress_filters' => true,
+            'post_type'         => 'post',
+            'post_status'       => 'publish',
+            'orderby'           => $orderby,
+            'posts_per_page' => $ppp * $page,
+        );
+        $query = new WP_Query($args);
+    } elseif ($type == "category") {
+        $query = new WP_Query(
+            [
+                'post_type' => 'post',
+                'post_status' => 'publish',
+                'posts_per_page' => 4,
+                'orderby' => $orderby,
+            ]
+        );
+    } elseif ($type == "search") {
+        global $query_string;
+        $query = new WP_Query(
+            [
+                's' => $query_string,
+                'post_type' => 'post',
+                'post_status' => 'publish',
+                'posts_per_page' => 4,
+                'orderby' => $orderby,
+            ]
+        );
+    }
+
+    if ($query->have_posts()) :
+        while ($query->have_posts()) :
+            set_query_var('query', $query);
+            get_template_part('template_parts/content', 'none');
+            wp_reset_postdata();
+        endwhile;
+    endif;
+}
+
+add_action('wp_ajax_nopriv_more_post_ajax', 'more_post_ajax');
+add_action('wp_ajax_more_post_ajax', 'more_post_ajax');

@@ -4,8 +4,8 @@
 */
 $orderby_allowed_list = ['modified', 'date'];
 $orderby = "modified";
-if (isset($_GET['orderby']) && in_array($_GET['orderby'], $orderby_allowed_list)) {
-    $orderby = $_GET['orderby'];
+if (isset($_POST['orderby']) && in_array($_POST['orderby'], $orderby_allowed_list)) {
+    $orderby = $_POST['orderby'];
 }
 get_header();
 ?>
@@ -56,7 +56,7 @@ get_header();
         global $wp;
         $current_url = home_url(add_query_arg(array(), $wp->request));
         ?>
-        <form action="<?php echo  $current_url; ?>" method="GET">
+        <form action="<?php echo  $current_url; ?>" method="POST">
             <label for="order" class="order">مرتب بر اساس:</label>
             <select name="orderby" class="order" id="orderby">
                 <option <?php if ($orderby == "date") {
@@ -70,14 +70,14 @@ get_header();
         </form>
     </div>
     <div class="blog-posts">
-        <div class="wrapper">
+        <div class="wrapper" id="ajax-posts">
             <?php
             $query = new WP_Query(
                 [
-                    'post_type' => 'post',
-                    'post_status' => 'publish',
-                    'posts_per_page' => -1,
-                    'orderby' => $orderby,
+                    'post_type'         => 'post',
+                    'post_status'       => 'publish',
+                    'posts_per_page'    => 4,
+                    'orderby'           => $orderby,
                 ]
             );
             if ($query->have_posts()) {
@@ -85,14 +85,15 @@ get_header();
                     set_query_var('query', $query);
                     get_template_part('template_parts/content', 'none');
                 }
+                wp_reset_postdata();
             }
             ?>
         </div>
         <div class="wrapper">
-            <a href="#" class="btn btn-sm btn-primary">
+            <button id="more_posts" class="btn btn-sm btn-primary">
                 نمایش بیشتر
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bi_arrow-down-circle-fill.png" alt="">
-            </a>
+            </button>
         </div>
     </div>
 </main>

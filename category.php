@@ -1,8 +1,8 @@
 <?php
 $orderby_allowed_list = ['modified', 'date'];
 $orderby = "modified";
-if (isset($_GET['orderby']) && in_array($_GET['orderby'], $orderby_allowed_list)) {
-    $orderby = $_GET['orderby'];
+if (isset($_POST['orderby']) && in_array($_POST['orderby'], $orderby_allowed_list)) {
+    $orderby = $_POST['orderby'];
 }
 global $wp;
 $current_url = home_url(add_query_arg(array(), $wp->request));
@@ -31,13 +31,13 @@ get_header();
         </form>
     </div>
     <div class="blog-posts">
-        <div class="wrapper">
+        <div class="wrapper" id="ajax-posts">
             <?php
             $query = new WP_Query(
                 [
                     'post_type' => 'post',
                     'post_status' => 'publish',
-                    'posts_per_page' => -1,
+                    'posts_per_page' => 4,
                     'orderby' => $orderby,
                 ]
             );
@@ -50,10 +50,10 @@ get_header();
             ?>
         </div>
         <div class="wrapper">
-            <a href="#" class="btn btn-sm btn-primary">
+            <button id="more_posts" class="btn btn-sm btn-primary">
                 نمایش بیشتر
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bi_arrow-down-circle-fill.png" alt="">
-            </a>
+            </button>
         </div>
     </div>
 </main>
