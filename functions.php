@@ -521,7 +521,7 @@ function more_post_ajax()
             [
                 'post_type' => 'post',
                 'post_status' => 'publish',
-                'posts_per_page' => 4,
+                'posts_per_page' => $ppp * $page,
                 'orderby' => $orderby,
             ]
         );
@@ -532,7 +532,7 @@ function more_post_ajax()
                 's' => $query_string,
                 'post_type' => 'post',
                 'post_status' => 'publish',
-                'posts_per_page' => 4,
+                'posts_per_page' => $ppp * $page,
                 'orderby' => $orderby,
             ]
         );
