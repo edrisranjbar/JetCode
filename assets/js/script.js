@@ -5,7 +5,7 @@ let humberger_menu_bars = document.querySelectorAll('.humberger-menu > .bar');
 let menu = document.querySelector('.menu');
 let menu_footer = document.querySelector('.menu_footer');
 let blog_hero = document.querySelector('.blog-hero');
-let is_open = false;
+let is_open = true;
 
 if (document.querySelector('.glider')) {
     new Glider(document.querySelector('.glider'), {
