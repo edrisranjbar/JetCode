@@ -1,14 +1,9 @@
-<?php
-$args = array(
-    'status' => 'approve',
-    'parent' => 0
-);
-$comments_query = new WP_Comment_Query;
-$comments = $comments_query->query($args);
-if ($comments) {
-?>
-    <div class="comments-list">
-        <ul>
+<div class="comments-list">
+    <ul>
+        <?php
+        $comments = $comments_query->comments;
+        if ($comments) {
+        ?>
             <?php
             foreach ($comments as $comment) {
             ?>
@@ -47,13 +42,13 @@ if ($comments) {
             <?php
             }
             ?>
-        </ul>
-        <div class="row more-comment-row">
-            <button class="btn btn-sm btn-primary more-comment-btn">نمایش بیشتر
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bi_arrow-down-circle-fill.png" />
-            </button>
-        </div>
-    <?php
-};
-    ?>
+    </ul>
+    <div class="row more-comment-row">
+        <button class="btn btn-sm btn-primary more-comment-btn">نمایش بیشتر
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bi_arrow-down-circle-fill.png" />
+        </button>
     </div>
+<?php
+        };
+?>
+</div>

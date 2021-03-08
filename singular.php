@@ -49,7 +49,15 @@ get_header();
                             </form>
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Comment.svg" class="comment-illustration" />
                         </div>
-                        <?php get_template_part('comment'); ?>
+                        <?php
+                        $comments_query = new WP_Comment_Query([
+                            'status'    => 'approve',
+                            'parent'    => 0,
+                            'post_id'   => $post_id
+                        ]);
+                        set_query_var('comments_query', $comments_query);
+                        get_template_part('comment');
+                        ?>
                     </div>
                 </article>
         <?php }
