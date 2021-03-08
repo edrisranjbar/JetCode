@@ -24,7 +24,7 @@ function toggle_menu(is_open) {
         menu.classList.remove('menu-open');
         menu_footer.style.display = "none";
         humberger_menu_bars.forEach((element) => {
-            menu.classList.remove('menu-open');
+            element.classList.remove("bg-light");
             element.style.display = "block";
             element.style.transform = "unset";
             element.style.top = "unset";
@@ -35,6 +35,9 @@ function toggle_menu(is_open) {
         body.style.height = "100vh";
         body.style.overflowY = "hidden";
         menu.classList.add('menu-open');
+        humberger_menu_bars.forEach((bar) => {
+            bar.classList.add("bg-light");
+        });
         humberger_menu_bars[0].style.transform = "rotate(45deg)";
         humberger_menu_bars[0].style.top = "11px";
         humberger_menu_bars[1].style.display = "none";

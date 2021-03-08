@@ -94,7 +94,7 @@ header {
 }
 
 .bg-light {
-  background-color: var(--gray);
+  background-color: var(--gray) !important;
 }
 
 .custom-logo-link {
@@ -122,6 +122,10 @@ header {
   border-radius: 5px;
   margin-bottom: 6px;
   transition: all 0.3s;
+}
+
+.bg-light .humberger-menu>.bar {
+  background-color: var(--dark80);
 }
 
 /* Menu */
@@ -799,6 +803,15 @@ main.post article {
   line-height: 31px;
   text-align: right;
   color: var(--dark);
+}
+
+.wp-block-image,
+.wp-block-embed {
+  margin: 0px;
+}
+
+.wp-block-image img {
+  height: auto;
 }
 
 .comments {
