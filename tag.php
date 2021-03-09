@@ -38,7 +38,6 @@ get_header();
                     'tag'       => single_tag_title('', false),
                     'post_type' => 'post',
                     'post_status' => 'publish',
-                    'posts_per_page' => 4,
                     'orderby' => $orderby,
                 ]
             );

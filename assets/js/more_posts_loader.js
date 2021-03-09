@@ -1,4 +1,4 @@
-let ppp = 4;
+let ppp = 12;
 let pageNumber = 1;
 
 function load_posts(reload = false, orderby = "modified") {

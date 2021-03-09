@@ -14,7 +14,7 @@ get_header();
 <main class="category">
     <h1 class="title">
         نتایج دسته بندی
-        <a href=""><span class="text-orange"><?php single_tag_title(); ?></span></a>
+        <a href=""><span class="text-orange"><?php single_cat_title(); ?></span></a>
     </h1>
     <div class="order-by-box">
         <form action="<?php echo  $current_url; ?>" method="GET">
@@ -37,7 +37,7 @@ get_header();
                 [
                     'post_type' => 'post',
                     'post_status' => 'publish',
-                    'posts_per_page' => 4,
+                    'category__and'      =>  $wp_query->get_queried_object_id(),
                     'orderby' => $orderby,
                 ]
             );

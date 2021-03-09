@@ -19,9 +19,14 @@ get_header();
     <div class="blog-posts">
         <?php
         global $query_string;
-        wp_parse_str($query_string, $search_query);
-        $query = new WP_Query($search_query);
-        $counter = 0;
+        $query = new WP_Query(
+            [
+                's' => $_GET['s'],
+                'post_type' => 'post',
+                'post_status' => 'publish',
+                'orderby' => $orderby,
+            ]
+        );
         if ($query->have_posts()) {
         ?>
             <div class="order-by-box">
@@ -44,7 +49,7 @@ get_header();
             </div>
             <div class="wrapper" id="ajax-posts">
                 <?php
-                while ($query->have_posts() and $counter++ < 4) {
+                while ($query->have_posts()) {
                     set_query_var('query', $query);
                     get_template_part('template_parts/content', 'none');
                     wp_reset_postdata();
