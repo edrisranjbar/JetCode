@@ -1071,7 +1071,8 @@ aside {
 
   .posts>.wrapper {
     flex-wrap: nowrap;
-    overflow-x: scroll;
+    overflow-x: auto;
+    padding-top: 20px;
   }
 
   .posts .wrapper:first-of-type {
