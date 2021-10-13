@@ -416,13 +416,21 @@ header {
   margin-bottom: 102px;
   background: linear-gradient(90deg, #7C96F7 0%, #6C63FF 100%);
   background-image: url('../images/Tutorials.png');
-  background-size: contain;
+  background-size: 100%;
   background-repeat: no-repeat;
   min-height: 800px;
+}
+.tutorials .row::-webkit-scrollbar {
+  display: none;
+}
+.tutorials .row{
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 .tutorial {
   width: 350px;
+  flex-shrink: 0;
   background: #F0F0F0;
   box-shadow: 0px 10px 40px rgba(50, 45, 45, 0.25);
   border-radius: 10px;

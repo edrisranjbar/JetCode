@@ -1,6 +1,6 @@
 <section class="tutorials">
     <h2 class="title">دوره های آموزشی</h2>
-    <div class="row">
+    <div class="row" style="overflow-x: scroll;">
         <?php
         $args = array(
             'post_type' => 'tutorial'
@@ -28,7 +28,7 @@
                             <h2 class="tutorial_title"><?php echo get_the_title(); ?></h2>
                         </a>
                         <div class="row">
-                            <span class="price_tag">11,300 تومان</span>
+                            <span class="price_tag">رایگان</span>
                         </div>
                     </div>
                 </div>
