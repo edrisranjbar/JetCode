@@ -115,7 +115,8 @@ add_action('wp_enqueue_scripts', 'JetCode_register_styles');
 function JetCode_register_scripts()
 {
     $version = wp_get_theme()->get('Version');
-    wp_enqueue_script('JetCode_script', get_template_directory_uri() . "/assets/js/script.js", ['JetCode_more_posts_loader_script', 'JetCode_glider_script', 'JetCode_swipe_script'], $version, true);
+    wp_enqueue_script('JetCode_script', get_template_directory_uri() . "/assets/js/script.js", ['JetCode_more_posts_loader_script', 'JetCode_glider_script', 'JetCode_swipe_script','JetCode_like_script'], $version, true);
+    wp_enqueue_script('JetCode_like_script', get_template_directory_uri() . "/assets/js/like.js", [], '1.0', true);
     wp_enqueue_script('JetCode_glider_script', get_template_directory_uri() . "/assets/js/glider.min.js", [], '1.0', true);
     wp_enqueue_script('JetCode_swipe_script', get_template_directory_uri() . "/assets/js/swipe.js", [], '1.0', true);
     wp_enqueue_script('JetCode_more_posts_loader_script', get_template_directory_uri() . "/assets/js/more_posts_loader.js", [], $version, true);

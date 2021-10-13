@@ -410,32 +410,67 @@ header {
 
 /* Tutorials Section */
 .tutorials {
-  margin-top: -417px;
+  margin-top: -600px;
+  padding-top: 185px;
+  padding-right: 40px;
   margin-bottom: 102px;
+  background: linear-gradient(90deg, #7C96F7 0%, #6C63FF 100%);
+  background-image: url('../images/Tutorials.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-height: 800px;
 }
 
-.tutorials .wrapper {
+.tutorial {
+  width: 350px;
+  background: #F0F0F0;
+  box-shadow: 0px 10px 40px rgba(50, 45, 45, 0.25);
+  border-radius: 10px;
+  margin-left: 20px;
+}
+.tutorial .thumbnail{
+  margin: 8px;
+}
+.tutorial .thumbnail img{
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+}
+.tutorial .row{
+  width: 100%;
   display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  margin-right: 78px;
+  justify-content: space-between;
 }
-
-.tutorials img {
-  width: 339px;
-  border-radius: 30px;
-  margin-left: 51px;
-}
-
 .tutorials .title {
   font-size: 40px;
   font-weight: bold;
-  text-align: center;
+  text-align: right;
   color: var(--white);
+  margin-bottom: 40px;
 }
-
+.tutorial_body{
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.price_tag{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 25px;
+  text-align: right;
+  color: #6C63FF;
+  margin-bottom: 16px;
+}
+.tutorial_title{
+  color: var(--dark);
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 37px;
+  text-align: right;
+  margin: 8px 0px 8px 0;
+}
 /* End Tutorials Section */
-
 /* Podcasts Page */
 .podcasts {
   padding: 0px 45px;
