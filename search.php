@@ -1,73 +1,56 @@
 <?php
 $orderby_allowed_list = ['modified', 'date'];
 $orderby = "modified";
-if (isset($_POST['orderby']) && in_array($_POST['orderby'], $orderby_allowed_list)) {
-    $orderby = $_POST['orderby'];
+if (isset($_GET['orderby']) && in_array($_GET['orderby'], $orderby_allowed_list)) {
+    $orderby = $_GET['orderby'];
 }
-global $wp;
-$current_url = home_url(add_query_arg(array(), $wp->request));
+global $query_string;
 get_header();
 ?>
-<section class="header_bg"></section>
-<img src="<?php echo get_template_directory_uri(); ?>/assets/images/search.svg" class="blog-left-search">
-<img src="<?php echo get_template_directory_uri(); ?>/assets/images/search.svg" class="blog-right-search">
-<main class="search-results">
+<div class="category_container search_container">
+
     <h1 class="title">
-        نتایج جست و جوی
-        <a href=""><span class="text-orange"><?php the_search_query(); ?></span></a>
+        نتایج جست و جو برای
+        <a href="#">
+            <span><?php the_search_query(); ?></span>
+        </a>
     </h1>
-    <div class="blog-posts">
+
+    <div class="order_by_box">
+        <form action="<?php echo  $current_url; ?>" method="GET">
+            <label for="order" class="order">مرتب بر اساس:</label>
+            <select name="orderby" class="order" id="orderby">
+                <option <?php if ($orderby == "date") {
+                            echo "selected";
+                        } ?> value="date">تاریخ انتشار</option>
+                <option <?php if ($orderby == "modified") {
+                            echo "selected";
+                        } ?> value="modified">تاریخ بروزرسانی</option>
+                <option value="views">بازدید</option>
+            </select>
+        </form>
+    </div>
+
+
+    <div class="category_posts">
         <?php
-        global $query_string;
-        $query = new WP_Query(
-            [
-                's' => $_GET['s'],
-                'post_type' => 'post',
-                'post_status' => 'publish',
-                'orderby' => $orderby,
-            ]
-        );
+        global $query;
+        $s = get_query_var('s');
+        $args = [
+            "s"             => $s,
+            "post_type"     => "post",
+            "post_status"   => "publish",
+            "orderby"       => $orderby
+        ];
+        $query = new WP_Query($args);
+
         if ($query->have_posts()) {
-        ?>
-            <div class="order-by-box">
-                <?php
-                global $wp;
-                $current_url = home_url(add_query_arg(array(), $wp->request));
-                ?>
-                <form action="<?php echo  $current_url; ?>" method="POST">
-                    <label for="order" class="order">مرتب بر اساس:</label>
-                    <select name="orderby" class="order" id="orderby">
-                        <option <?php if ($orderby == "date") {
-                                    echo "selected";
-                                } ?> value="date">تاریخ انتشار</option>
-                        <option <?php if ($orderby == "modified") {
-                                    echo "selected";
-                                } ?> value="modified">تاریخ بروزرسانی</option>
-                        <option value="views">بازدید</option>
-                    </select>
-                </form>
-            </div>
-            <div class="wrapper" id="ajax-posts">
-                <?php
-                while ($query->have_posts()) {
-                    set_query_var('query', $query);
-                    get_template_part('template_parts/content', 'none');
-                    wp_reset_postdata();
-                }
-                ?>
-            </div>
-            <div class="wrapper">
-                <button id="more_posts" class="btn btn-sm btn-primary">
-                    نمایش بیشتر
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bi_arrow-down-circle-fill.png" alt="">
-                </button>
-            </div>
-        <?php
+            while ($query->have_posts()) {
+                set_query_var('query', $query);
+                get_template_part('template-parts/content', 'none');
+            }
         } else {
-            echo "<h3 class='text-center'>نتیجه ای یافت نشد!</h3>";
+            echo "<h3 style='text-align:center;margin: 25px;'>نتیجه ای یافت نشد</h3>";
         }
         ?>
     </div>
-</main>
-<?php
-get_footer();

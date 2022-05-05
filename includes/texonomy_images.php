@@ -66,7 +66,7 @@ if (!class_exists('JetCode_category_image')) {
         { ?>
             <tr class="form-field term-group-wrap">
                 <th scope="row">
-                    <label for="category-image-id"><?php _e('Image', 'hero-theme'); ?></label>
+                    <label for="category-image-id"><?php _e('تصویر', 'hero-theme'); ?></label>
                 </th>
                 <td>
                     <?php $image_id = get_term_meta($term->term_id, 'category-image-id', true); ?>

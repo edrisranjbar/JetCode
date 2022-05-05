@@ -3,43 +3,8 @@
 if (!defined('ABSPATH')) {
     exit;
 }
-require_once("includes/recent_posts.php");
-require_once("includes/texonomy_images.php");
 require_once(WP_PLUGIN_DIR . "/wp-statistics" . "/includes/template-functions.php");
-
-// Add custom widgets
-function JetCode_register_custom_widgets()
-{
-    register_widget('JetCode_Widget_Recent_Posts');
-}
-add_action('widgets_init', 'JetCode_register_custom_widgets');
-
-// Add menu
-function JetCode_menu()
-{
-    $locations = [
-        'primary' => "منوی اصلی"
-    ];
-    register_nav_menus($locations);
-}
-add_action('init', 'JetCode_menu');
-
-// get menu items
-function JetCode_get_menu_items($menu_name)
-{
-    if (($locations = get_nav_menu_locations()) && isset($locations[$menu_name])) {
-        $menu = wp_get_nav_menu_object($locations[$menu_name]);
-        $menu_items = wp_get_nav_menu_items($menu->term_id);
-        $menu_list = '<ul>';
-        foreach ((array) $menu_items as $key => $menu_item) {
-            $title = $menu_item->title;
-            $url = $menu_item->url;
-            $menu_list .= '<a href="' . $url . '"><li>' . $title . '</li></a>';
-        }
-        $menu_list .= '</ul>';
-    }
-    return $menu_list ? $menu_list : [];
-}
+require_once("includes/texonomy_images.php");
 
 // Add theme supports
 function JetCode_theme_support()
@@ -50,83 +15,47 @@ function JetCode_theme_support()
 }
 add_action('after_setup_theme', 'JetCode_theme_support');
 
-// Add Tutorial post type
-function JetCode_setup_tutorial_post_type()
+function JetCode_menu()
 {
-    $args = array(
-        'public'    => true,
-        'label'     => __('دوره ها', 'textdomain'),
-        'menu_icon' => 'dashicons-welcome-learn-more',
-        'menu_position' => 5,
-        'supports'      => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
-        'labels' => [
-            'name'                  => _x('دوره ها', 'Post type general name', 'textdomain'),
-            'singular_name'         => _x('دوره', 'Post type singular name', 'textdomain'),
-            'menu_name'             => _x('دوره ها', 'Admin Menu text', 'textdomain'),
-            'name_admin_bar'        => _x('دوره', 'Add New on Toolbar', 'textdomain'),
-            'add_new'               => __('افزودن', 'textdomain'),
-            'add_new_item'          => __('افزودن دوره جدید', 'textdomain'),
-            'new_item'              => __('دوره جدید', 'textdomain'),
-            'edit_item'             => __('ویرایش دوره', 'textdomain'),
-            'view_item'             => __('نمایش دوره', 'textdomain'),
-            'all_items'             => __('همه دوره ها', 'textdomain'),
-            'search_items'          => __('جست و جوی دوره ها', 'textdomain'),
-            'parent_item_colon'     => __('دوره های والد:', 'textdomain'),
-            'not_found'             => __('دوره ای یافت نشد!', 'textdomain'),
-            'not_found_in_trash'    => __('دوره ای در سطل زباله یافت نشد!', 'textdomain'),
-            'featured_image'        => _x('تصویر کاور دوره', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'textdomain'),
-            'set_featured_image'    => _x('تنظیم تصویر دوره', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'textdomain'),
-            'remove_featured_image' => _x('حذف کاور دوره', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'textdomain'),
-            'use_featured_image'    => _x('استفاده از یک تصویر برای دوره', 'Overrides the “Use as featured image” phrase for this post type. Added in 4.3', 'textdomain'),
-            'archives'              => _x('Book archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'textdomain'),
-            'insert_into_item'      => _x('Insert into book', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'textdomain'),
-            'uploaded_to_this_item' => _x('Uploaded to this book', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'textdomain'),
-            'filter_items_list'     => _x('فیلتر لیست دوره ها', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'textdomain'),
-            'items_list_navigation' => _x('Books list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'textdomain'),
-            'items_list'            => _x('لیست دوره ها', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'textdomain'),
-        ],
-    );
-    register_post_type('tutorial', $args);
+    $locations = [
+        'primary' => "منوی اصلی",
+        'footer' => "منوی فوتر موبایل",
+    ];
+    register_nav_menus($locations);
 }
-add_action('init', 'JetCode_setup_tutorial_post_type');
+add_action('init', 'JetCode_menu');
 
-// Customize the excerpt
-function JetCode_custom_excerpt_length($length)
+function JetCode_get_menu_items($menu_name)
 {
-    return ($length <= 40) ? $length : 40;
+    if (($locations = get_nav_menu_locations()) && isset($locations[$menu_name])) {
+        $menu = wp_get_nav_menu_object($locations[$menu_name]);
+        $menu_items = wp_get_nav_menu_items($menu->term_id);
+        if ($menu_name === "footer") {
+            foreach ((array) $menu_items as $key => $menu_item) {
+                $title = $menu_item->title;
+                $url = $menu_item->url;
+                $thumbnail_src = wp_get_attachment_image_src($menu_item->thumbnail_id)[0] ?? get_template_directory_uri() . "/images/no-icon.png";
+                $menu_list .= '<a href="' . $url . '">
+                <div class="navbar_icon">
+                    <div class="container" id="index">
+                        <img src="' . $thumbnail_src . '" alt="icon">
+                        <span>' . $title . '</span>
+                    </div>
+                </div>
+            </a>';
+            }
+        } else {
+            $menu_list = '<ul>';
+            foreach ((array) $menu_items as $key => $menu_item) {
+                $title = $menu_item->title;
+                $url = $menu_item->url;
+                $menu_list .= '<li> <a href="' . $url . '">' . $title . '</a> </li>';
+            }
+            $menu_list .= '</ul>';
+        }
+    }
+    return $menu_list ? $menu_list : "";
 }
-add_filter('excerpt_length', 'JetCode_custom_excerpt_length', 999);
-function JetCode_excerpt_more($more)
-{
-    return ' ...';
-}
-add_filter('excerpt_more', 'JetCode_excerpt_more');
-
-
-// Enqueue assets
-function JetCode_register_styles()
-{
-    $version = wp_get_theme()->get('Version');
-    wp_enqueue_style('JetCode_style', get_template_directory_uri() . "/assets/css/style.css", ['JetCode_glider_style'], $version, 'all');
-    wp_enqueue_style('JetCode_glider_style', get_template_directory_uri() . "/assets/css/glider.min.css", [], '1.0', 'all');
-}
-add_action('wp_enqueue_scripts', 'JetCode_register_styles');
-
-function JetCode_register_scripts()
-{
-    $version = wp_get_theme()->get('Version');
-    wp_enqueue_script('JetCode_script', get_template_directory_uri() . "/assets/js/script.js", ['JetCode_more_posts_loader_script', 'JetCode_glider_script', 'JetCode_swipe_script','JetCode_like_script'], $version, true);
-    wp_enqueue_script('JetCode_like_script', get_template_directory_uri() . "/assets/js/like.js", [], '1.0', true);
-    wp_enqueue_script('JetCode_glider_script', get_template_directory_uri() . "/assets/js/glider.min.js", [], '1.0', true);
-    wp_enqueue_script('JetCode_swipe_script', get_template_directory_uri() . "/assets/js/swipe.js", [], '1.0', true);
-    wp_enqueue_script('JetCode_more_posts_loader_script', get_template_directory_uri() . "/assets/js/more_posts_loader.js", [], $version, true);
-
-    wp_localize_script('JetCode_more_posts_loader_script', 'ajax_posts', array(
-        'ajaxurl' => admin_url('admin-ajax.php'),
-        'noposts' => __('No older posts found', 'JetCode'),
-    ));
-}
-add_action('wp_enqueue_scripts', 'JetCode_register_scripts');
 
 // Wordpress Theme customization panel
 if (!class_exists('WPEX_Theme_Options')) {
@@ -177,13 +106,6 @@ if (!class_exists('WPEX_Theme_Options')) {
             // If we have options lets sanitize them
             if ($options) {
 
-                // Checkbox
-                if (!empty($options['checkbox_example'])) {
-                    $options['checkbox_example'] = 'on';
-                } else {
-                    unset($options['checkbox_example']); // Remove from options if not checked
-                }
-
                 // Hero Section
                 if (!empty($options['hero_title'])) {
                     $options['hero_title'] = sanitize_text_field($options['hero_title']);
@@ -227,30 +149,17 @@ if (!class_exists('WPEX_Theme_Options')) {
                 } else {
                     unset($options['about_description']);
                 }
-                if (!empty($options['instagram'])) {
-                    $options['instagram'] = sanitize_text_field($options['instagram']);
+
+                if (!empty($options['contact_link'])) {
+                    $options['contact_link'] = sanitize_text_field($options['contact_link']);
                 } else {
-                    unset($options['instagram']);
+                    unset($options['contact_link']);
                 }
-                if (!empty($options['twitter'])) {
-                    $options['twitter'] = sanitize_text_field($options['twitter']);
+
+                if (!empty($options['resume_link'])) {
+                    $options['resume_link'] = sanitize_text_field($options['resume_link']);
                 } else {
-                    unset($options['twitter']);
-                }
-                if (!empty($options['email'])) {
-                    $options['email'] = sanitize_text_field($options['email']);
-                } else {
-                    unset($options['email']);
-                }
-                if (!empty($options['linkedin'])) {
-                    $options['linkedin'] = sanitize_text_field($options['linkedin']);
-                } else {
-                    unset($options['linkedin']);
-                }
-                if (!empty($options['github'])) {
-                    $options['github'] = sanitize_text_field($options['github']);
-                } else {
-                    unset($options['github']);
+                    unset($options['resume_link']);
                 }
 
                 // Podcast
@@ -289,19 +198,9 @@ if (!class_exists('WPEX_Theme_Options')) {
 
                     <?php settings_fields('theme_options'); ?>
 
-                    <table class="form-table wpex-custom-admin-login-table">
-                        <tr valign="top">
-                            <th scope="row"><?php esc_html_e('Checkbox Example', 'text-domain'); ?></th>
-                            <td>
-                                <?php $value = self::get_theme_option('checkbox_example'); ?>
-                                <input type="checkbox" name="theme_options[checkbox_example]" <?php checked($value, 'on'); ?>> <?php esc_html_e('Checkbox example description.', 'text-domain'); ?>
-                            </td>
-                        </tr>
-                    </table>
-
                     <!-- Hero Section -->
                     <table class="form-table wpex-custom-admin-login-table">
-                        <caption>قسمت هیرو</caption>
+                        <h1>قسمت هیرو</h1>
                         <tr valign="top">
                             <th scope="row"><?php esc_html_e('عنوان', 'text-domain'); ?></th>
                             <td>
@@ -347,7 +246,7 @@ if (!class_exists('WPEX_Theme_Options')) {
                     </table>
                     <!-- About Section -->
                     <table class="form-table wpex-custom-admin-login-table">
-                        <caption>درباره ما</caption>
+                        <h1>درباره ما</h1>
                         <tr valign="top">
                             <th scope="row"><?php esc_html_e('عنوان درباره ما', 'text-domain'); ?></th>
                             <td>
@@ -362,65 +261,27 @@ if (!class_exists('WPEX_Theme_Options')) {
                                 <textarea name="theme_options[about_description]"><?php echo esc_attr($value); ?></textarea>
                             </td>
                         </tr>
-                        <tr valign="top">
-                            <th scope="row"><?php esc_html_e('اینستاگرام', 'text-domain'); ?></th>
-                            <td>
-                                <?php $value = self::get_theme_option('instagram'); ?>
-                                <input type="url" name="theme_options[instagram]" value="<?php echo esc_attr($value); ?>">
-                            </td>
-                        </tr>
-                        <tr valign="top">
-                            <th scope="row"><?php esc_html_e('توییتر', 'text-domain'); ?></th>
-                            <td>
-                                <?php $value = self::get_theme_option('twitter'); ?>
-                                <input type="url" name="theme_options[twitter]" value="<?php echo esc_attr($value); ?>">
-                            </td>
-                        </tr>
-                        <tr valign="top">
-                            <th scope="row"><?php esc_html_e('ایمیل', 'text-domain'); ?></th>
-                            <td>
-                                <?php $value = self::get_theme_option('email'); ?>
-                                <input type="url" name="theme_options[email]" value="<?php echo esc_attr($value); ?>">
-                            </td>
-                        </tr>
-                        <tr valign="top">
-                            <th scope="row"><?php esc_html_e('لینکدین', 'text-domain'); ?></th>
-                            <td>
-                                <?php $value = self::get_theme_option('linkedin'); ?>
-                                <input type="url" name="theme_options[linkedin]" value="<?php echo esc_attr($value); ?>">
-                            </td>
-                        </tr>
-                        <tr valign="top">
-                            <th scope="row"><?php esc_html_e('گیت هاب', 'text-domain'); ?></th>
-                            <td>
-                                <?php $value = self::get_theme_option('github'); ?>
-                                <input type="url" name="theme_options[github]" value="<?php echo esc_attr($value); ?>">
-                            </td>
-                        </tr>
-                    </table>
 
-                    <!-- Podcasts -->
-                    <table class="form-table wpex-custom-admin-login-table">
-                        <caption>پادکست ها</caption>
-                        <tr valign="top">
-                            <th scope="row"><?php esc_html_e('عنوان', 'text-domain'); ?></th>
+                        <tr>
+                            <th scope="row"><?php esc_html_e('لینک دکمه رزومه', 'text-domain'); ?></th>
                             <td>
-                                <?php $value = self::get_theme_option('podcast-title'); ?>
-                                <input name="theme_options[podcast-title]" value="<?php echo esc_attr($value); ?>">
+                                <?php $value = self::get_theme_option('resume_link'); ?>
+                                <input name="theme_options[resume_link]" type="url" value="<?php echo esc_attr($value); ?>">
                             </td>
                         </tr>
-                        <tr valign="top">
-                            <th scope="row"><?php esc_html_e('توضیحات', 'text-domain'); ?></th>
+                        <tr>
+                            <th scope="row"><?php esc_html_e('لینک دکمه ارتباط با من', 'text-domain'); ?></th>
                             <td>
-                                <?php $value = self::get_theme_option('podcast-description'); ?>
-                                <textarea name="theme_options[podcast-description]"><?php echo esc_attr($value); ?></textarea>
+                                <?php $value = self::get_theme_option('contact_link'); ?>
+                                <input name="theme_options[contact_link]" type="url" value="<?php echo esc_attr($value); ?>">
                             </td>
                         </tr>
-                        <tr valign="top">
-                            <th scope="row"><?php esc_html_e('لینک آی فریم پادکست', 'text-domain'); ?></th>
+
+                        <tr>
+                            <th scope="row"><?php esc_html_e('توضیحات درباره ما', 'text-domain'); ?></th>
                             <td>
-                                <?php $value = self::get_theme_option('podcast-frame'); ?>
-                                <input type="url" name="theme_options[podcast-frame]" value="<?php echo esc_attr($value); ?>">
+                                <?php $value = self::get_theme_option('about_description'); ?>
+                                <textarea name="theme_options[about_description]"><?php echo esc_attr($value); ?></textarea>
                             </td>
                         </tr>
                     </table>
@@ -464,6 +325,47 @@ function JetCode_get_theme_option($id = '')
 }
 
 
+// Add Tutorial post type
+function JetCode_setup_tutorial_post_type()
+{
+    $args = array(
+        'public'    => true,
+        'label'     => __('دوره ها', 'textdomain'),
+        'menu_icon' => 'dashicons-welcome-learn-more',
+        'menu_position' => 5,
+        'supports'      => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
+        'labels' => [
+            'name'                  => _x('دوره ها', 'Post type general name', 'textdomain'),
+            'singular_name'         => _x('دوره', 'Post type singular name', 'textdomain'),
+            'menu_name'             => _x('دوره ها', 'Admin Menu text', 'textdomain'),
+            'name_admin_bar'        => _x('دوره', 'Add New on Toolbar', 'textdomain'),
+            'add_new'               => __('افزودن', 'textdomain'),
+            'add_new_item'          => __('افزودن دوره جدید', 'textdomain'),
+            'new_item'              => __('دوره جدید', 'textdomain'),
+            'edit_item'             => __('ویرایش دوره', 'textdomain'),
+            'view_item'             => __('نمایش دوره', 'textdomain'),
+            'all_items'             => __('همه دوره ها', 'textdomain'),
+            'search_items'          => __('جست و جوی دوره ها', 'textdomain'),
+            'parent_item_colon'     => __('دوره های والد:', 'textdomain'),
+            'not_found'             => __('دوره ای یافت نشد!', 'textdomain'),
+            'not_found_in_trash'    => __('دوره ای در سطل زباله یافت نشد!', 'textdomain'),
+            'featured_image'        => _x('تصویر کاور دوره', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'textdomain'),
+            'set_featured_image'    => _x('تنظیم تصویر دوره', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'textdomain'),
+            'remove_featured_image' => _x('حذف کاور دوره', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'textdomain'),
+            'use_featured_image'    => _x('استفاده از یک تصویر برای دوره', 'Overrides the “Use as featured image” phrase for this post type. Added in 4.3', 'textdomain'),
+            'archives'              => _x('Book archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'textdomain'),
+            'insert_into_item'      => _x('Insert into book', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'textdomain'),
+            'uploaded_to_this_item' => _x('Uploaded to this book', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'textdomain'),
+            'filter_items_list'     => _x('فیلتر لیست دوره ها', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'textdomain'),
+            'items_list_navigation' => _x('Books list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'textdomain'),
+            'items_list'            => _x('لیست دوره ها', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'textdomain'),
+        ],
+    );
+    register_post_type('tutorial', $args);
+}
+add_action('init', 'JetCode_setup_tutorial_post_type');
+
+
 // Sidebar widgets
 function JetCode_register_sidebars()
 {
@@ -472,12 +374,14 @@ function JetCode_register_sidebars()
         'name'          => __('ستون کناری', 'JetCode'),
         'before_widget' => '<section class="widget">',
         'after_widget'  => '</div></section>',
-        'before_title'  => '<div class="widget-title"><h3>',
-        'after_title'   => '</h3></div><div class="widget-body">',
+        'before_title'  => '<div class="widget_title"><h3>',
+        'after_title'   => '</h3></div><div class="widget_body">',
     ]);
 }
 add_action('widgets_init', 'JetCode_register_sidebars');
-// Footer
+
+
+// footer copyright
 function JetCode_footer_copyright()
 {
     $site_name = get_bloginfo('name');
@@ -485,68 +389,37 @@ function JetCode_footer_copyright()
     return "<p>تمامی حقوق برای وب سایت <a href='$site_url'>$site_name</a> محفوظ است.</p>";
 }
 
-function more_post_ajax()
+// footer widgets
+function JetCode_footer_widgets()
 {
-    $orderby_allowed_list = ['modified', 'date'];
-    $orderby = "modified";
-    if (isset($_POST['orderby']) && in_array($_POST['orderby'], $orderby_allowed_list)) {
-        $orderby = $_POST['orderby'];
-    }
-    $ppp = (isset($_POST["ppp"])) ? $_POST["ppp"] : 4;
-    $page = (isset($_POST['pageNumber'])) ? $_POST['pageNumber'] : 2;
-    $type =  (isset($_POST['page_type'])) ? $_POST['page_type'] : "blog";
-    $tag_title = (isset($_POST['tag_title'])) ? $_POST['tag_title'] : "";
-    header("Content-Type: text/html");
-
-    if ($type == "blog") {
-        $args = array(
-            'suppress_filters' => true,
-            'post_type'         => 'post',
-            'post_status'       => 'publish',
-            'orderby'           => $orderby,
-            'posts_per_page' => $ppp * $page,
-        );
-        $query = new WP_Query($args);
-    } elseif ($type == "tag") {
-        $args = array(
-            'tag'       => $tag_title,
-            'suppress_filters' => true,
-            'post_type'         => 'post',
-            'post_status'       => 'publish',
-            'orderby'           => $orderby,
-            'posts_per_page' => $ppp * $page,
-        );
-        $query = new WP_Query($args);
-    } elseif ($type == "category") {
-        $query = new WP_Query(
-            [
-                'post_type' => 'post',
-                'post_status' => 'publish',
-                'posts_per_page' => $ppp * $page,
-                'orderby' => $orderby,
-            ]
-        );
-    } elseif ($type == "search") {
-        global $query_string;
-        $query = new WP_Query(
-            [
-                's' => $query_string,
-                'post_type' => 'post',
-                'post_status' => 'publish',
-                'posts_per_page' => $ppp * $page,
-                'orderby' => $orderby,
-            ]
-        );
-    }
-
-    if ($query->have_posts()) :
-        while ($query->have_posts()) :
-            set_query_var('query', $query);
-            get_template_part('template_parts/content', 'none');
-            wp_reset_postdata();
-        endwhile;
-    endif;
+    register_sidebar(array(
+        'name' => __('ستون اول', 'JetCode'),
+        'id' => 'footer-1',
+        'description' => __('در ستون اول پابرگ سایت نمایش داده می شود', 'JetCode'),
+        'before_widget' => '<div class="">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="title">',
+        'after_title' => '</h4>',
+    ));
+    register_sidebar(array(
+        'name' => __('ستون دوم', 'JetCode'),
+        'id' => 'footer-2',
+        'description' => __('در ستون دوم پابرگ سایت نمایش داده می شود', 'JetCode'),
+        'before_widget' => '<div class="">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="title">',
+        'after_title' => '</h4>',
+    ));
+    register_sidebar(array(
+        'name' => __('ستون سوم', 'JetCode'),
+        'id' => 'footer-3',
+        'description' => __('در ستون سوم پابرگ سایت نمایش داده می شود', 'JetCode'),
+        'before_widget' => '<div class="">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="title">',
+        'after_title' => '</h4>',
+    ));
 }
+add_action('widgets_init', 'JetCode_footer_widgets');
 
-add_action('wp_ajax_nopriv_more_post_ajax', 'more_post_ajax');
-add_action('wp_ajax_more_post_ajax', 'more_post_ajax');
+add_filter('use_widgets_block_editor', '__return_false');

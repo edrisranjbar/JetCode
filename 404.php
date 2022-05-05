@@ -1,9 +1,22 @@
-<?php get_header(); ?>
-<main class="page_404">
-    <div class="wrapper">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/404.png" alt="404" class="image_404">
-        <p class="error-404-text text-white">صفحه مورد نظر یافت نشد.</p>
-        <a class="error-404-link-back" href="<?php echo get_bloginfo('url'); ?>">رفتن به صفحه اصلی</a>
-    </div>
-</main>
-<?php get_footer(); ?>
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>یافت نشد</title>
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/style.css">
+</head>
+
+<body class="bg_white">
+    <main>
+        <div class="page_404">
+            <h1 class="title_404">&lt;404&gt;</h1>
+            <p class="description_404">پیداش نکردم :(</p>
+            <a href="<?php get_bloginfo('url'); ?>">برو صفحه اصلی</a>
+        </div>
+    </main>
+
+</body>
+
+</html>
