@@ -40,7 +40,6 @@ $categories = get_categories(["orderby" => "count", "order" => "DESC", "number" 
                 <option <?php if ($orderby == "modified") {
                             echo "selected";
                         } ?> value="modified">تاریخ بروزرسانی</option>
-                <option value="views">بازدید</option>
             </select>
         </form>
     </div>
