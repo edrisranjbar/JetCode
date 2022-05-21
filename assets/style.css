@@ -380,6 +380,7 @@ a{
     display: flex;
     justify-content: center;
     margin-bottom: 115px;
+    padding: 0px 32px;
 }
 .custom_btns a{
     display: flex;
@@ -675,7 +676,16 @@ select.order{
 .post_content p{
     margin: revert;
 }
-
+.post_content iframe{
+    width: 100%;
+}
+.post_content pre.EnlighterJSRAW {
+    width: 100%;
+    direction: ltr;
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
 .comments{
     background-color: var(--light_blue);
     box-shadow: 0px 4px 30px rgb(204 204 204 / 70%);
@@ -1614,6 +1624,7 @@ main>footer .links a{
     }
     .comment_form input, textarea{
         margin: 0 10px 0 0;
+        width: 100%;
     }
     .comment_form form{
         width: 100%;
@@ -1637,48 +1648,48 @@ main>footer .links a{
     }
     /* end post page */
     /* start footer */
-    footer{
+    main>footer{
         background-image: url(../images/footerwave_mobile.png);
         background-size: 100% 100%;
     }
-    footer section{
+    main>footer section{
         margin-top: 70px;
         justify-content: unset;
         width: 100vw;
         flex-wrap: wrap;
         padding: 0px 16px;
     }
-    footer .widget{
-        width: 100vw;
+    main>footer .widget{
+        width: 100vw !important;
         margin: 0px 0px 16px 0px;
     }
-    footer .widget .title{
+    main>footer .widget .title{
         width: auto;
         font-size: 16px;
         padding-bottom: 16px;
         margin: 16px 0px;
     }
-    footer .widget p, footer .widget a{
-        font-size: 12px;
-        line-height: 18px;
+    main>footer .widget p, footer .widget a{
+        font-size: 12px !important;
+        line-height: 18px !important;
     }
-    footer .widget .icons{
+    main>footer .widget .icons{
         margin-bottom: 10px;
     }
-    footer .widget .icons a{
+    main>footer .widget .icons a{
         margin-right: 7px;
     }
-    footer .widget p.content{
+    main>footer .widget p.content{
         margin-top: 10px;
     }
-    footer .widget p.content a:first-child{
+    main>footer .widget p.content a:first-child{
         margin-bottom: 10px;
     }
-    footer .widget .links a{
+    main>footer .widget .links a{
         font-size: 14px;
     }
     
-    footer .widget .links a:not(:last-child){
+    main>footer .widget .links a:not(:last-child){
         margin-bottom: 16px; 
     }
         
