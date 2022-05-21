@@ -1641,11 +1641,11 @@ main>footer .links a{
     }
     /* end post page */
     /* start footer */
-    footer{
+    main>footer{
         background-image: url(../images/footerwave_mobile.png);
         background-size: 100% 100%;
     }
-    footer section{
+    main>footer section{
         margin-top: 70px;
         justify-content: unset;
         width: 100vw;
@@ -1662,27 +1662,27 @@ main>footer .links a{
         padding-bottom: 16px;
         margin: 16px 0px;
     }
-    footer .widget p, footer .widget a{
+    main>footer .widget p, footer .widget a{
         font-size: 12px !important;
         line-height: 18px !important;
     }
-    footer .widget .icons{
+    main>footer .widget .icons{
         margin-bottom: 10px;
     }
-    footer .widget .icons a{
+    main>footer .widget .icons a{
         margin-right: 7px;
     }
-    footer .widget p.content{
+    main>footer .widget p.content{
         margin-top: 10px;
     }
-    footer .widget p.content a:first-child{
+    main>footer .widget p.content a:first-child{
         margin-bottom: 10px;
     }
-    footer .widget .links a{
+    main>footer .widget .links a{
         font-size: 14px;
     }
     
-    footer .widget .links a:not(:last-child){
+    main>footer .widget .links a:not(:last-child){
         margin-bottom: 16px; 
     }
         
