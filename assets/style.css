@@ -678,7 +678,13 @@ select.order{
 .post_content iframe{
     width: 100%;
 }
-
+.post_content pre.EnlighterJSRAW {
+    width: 100%;
+    direction: ltr;
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
 .comments{
     background-color: var(--light_blue);
     box-shadow: 0px 4px 30px rgb(204 204 204 / 70%);
