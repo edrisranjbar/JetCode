@@ -1652,19 +1652,19 @@ main>footer .links a{
         flex-wrap: wrap;
         padding: 0px 16px;
     }
-    footer .widget{
-        width: 100vw;
+    main>footer .widget{
+        width: 100vw !important;
         margin: 0px 0px 16px 0px;
     }
-    footer .widget .title{
+    main>footer .widget .title{
         width: auto;
         font-size: 16px;
         padding-bottom: 16px;
         margin: 16px 0px;
     }
     footer .widget p, footer .widget a{
-        font-size: 12px;
-        line-height: 18px;
+        font-size: 12px !important;
+        line-height: 18px !important;
     }
     footer .widget .icons{
         margin-bottom: 10px;
