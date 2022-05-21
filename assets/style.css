@@ -675,6 +675,9 @@ select.order{
 .post_content p{
     margin: revert;
 }
+.post_content iframe{
+    width: 100%;
+}
 
 .comments{
     background-color: var(--light_blue);
