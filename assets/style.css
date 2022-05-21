@@ -679,7 +679,7 @@ select.order{
 .post_content iframe{
     width: 100%;
 }
-.post_content pre.EnlighterJSRAW {
+.post_content pre{
     width: 100%;
     direction: ltr;
     text-align: left;
