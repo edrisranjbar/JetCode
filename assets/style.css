@@ -1614,6 +1614,7 @@ main>footer .links a{
     }
     .comment_form input, textarea{
         margin: 0 10px 0 0;
+        width: 100%;
     }
     .comment_form form{
         width: 100%;
