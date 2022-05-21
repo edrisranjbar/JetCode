@@ -380,6 +380,7 @@ a{
     display: flex;
     justify-content: center;
     margin-bottom: 115px;
+    padding: 0px 32px;
 }
 .custom_btns a{
     display: flex;
