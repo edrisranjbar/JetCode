@@ -1,4 +1,7 @@
-<?php get_header(); ?>
+<?php
+get_header();
+$blog_page_url = site_url('/blog') ?? get_option('page_for_posts');
+?>
 <div class="intro">
     <section class="right">
         <h2 class="title"><?php echo JetCode_get_theme_option('hero_title'); ?></h2>
@@ -49,7 +52,7 @@
         }
         ?>
     </div>
-    <a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="btn">رفتن به وبلاگ</a>
+    <a href="<?php echo $blog_page_url; ?>" class="btn">رفتن به وبلاگ</a>
 </div>
 <div class="tutorials">
     <h2 class="title">دوره های آموزشی</h2>
