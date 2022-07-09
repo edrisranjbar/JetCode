@@ -3,7 +3,8 @@
 if (!defined('ABSPATH')) {
     exit;
 }
-require_once(WP_PLUGIN_DIR . "/wp-statistics" . "/includes/template-functions.php");
+if (file_exists(WP_PLUGIN_DIR . "/wp-statistics" . "/includes/template-functions.php"))
+    require_once(WP_PLUGIN_DIR . "/wp-statistics" . "/includes/template-functions.php");
 require_once("includes/texonomy_images.php");
 
 // Add theme supports
