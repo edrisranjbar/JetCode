@@ -283,8 +283,8 @@ a{
     box-shadow: 0px 10px 40px rgba(59, 59, 60, 0.1);
     border-radius: 8px;
     min-width: 350px;
-    margin-left: 16px;
-    margin-right: 16px;
+    margin-left: 16px !important;
+    margin-right: 16px !important;
 }
 
 .overlay{

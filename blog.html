@@ -1,418 +1,417 @@
 <!DOCTYPE html>
 <html lang="fa">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>وبلاگ</title>
     <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
-</head>
-<body class="bg_light">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="splide-core.min.css" />
+    <script src="splide.min.js"></script>
+  </head>
+  <body class="bg_light">
     <main>
-        <header>
-            <nav class="menu">
-                <ul>
-                    <li>
-                        <a href="index.html">صفحه نخست</a>
-                    </li>
-                    <li>
-                        <a href="blog.html"> وبلاگ</a>
-                    </li>
-                    <li>
-                        <a href="podcasts.html"> پادکست </a>
-                    </li>
-                    <li>
-                        <a href="index.html"> دوره ها</a>
-                    </li>  
-                </ul>
-            </nav>
-        </header>
-        <div class="blog_container">
-            <section class="custom_btns">
-                <a href="#">
-                    <img src="images/memoirs_custom_btn.png" alt="custom">
-                    <span>
-                        خاطرات
-                    </span>
-                    
-                </a>
-                <a href="#">
-                    <img src="images/other_custom_btn.png" alt="custom">
-                    <span>
-                        متفرقه
-                    </span>
-                    
-                </a>
-                <a href="#">
-                    <img src="images/Source Code.png" alt="custom">
-                    <span>
-                        کدنویسی
-                    </span>
-                    
-                </a>
-            </section>
-            <div class="order_by_box">
-                <form action="https://edrisranjbar.ir/blog" method="POST">
-                    <label for="order" class="order">مرتب بر اساس:</label>
-                    <select name="orderby" class="order" id="orderby">
-                        <option value="date">تاریخ انتشار</option>
-                        <option selected="" value="modified">تاریخ بروزرسانی</option>
-                        <option value="views">بازدید</option>
-                    </select>
-                </form>
-            </div>
-            <div class="posts_by_category_row row">
-                <h2 class="posts_category_title">پایتون</h2>
-                <a class="btn_view_more_posts" href="">نمایش بیشتر</a>
-            </div>
-            <div class="posts_by_category">
-                <div class="card">
-                    <div class="card_header">
-                        <img src="images/همه-چیز-در-مورد-IP-1.png" alt="Thmubnail">
-                    </div>
-                    <div class="card_body">
-                        <section>
-                            <a href="#">
-                                <span class="badge">پایتون</span>
-                            </a>
-                            <a href="#">
-                                <span class="badge">نرم افزار</span>
-                            </a>
-                        </section>
-                        <h3 class="card_title">آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس</h3>
-                    </div>
-                    <div class="card_footer">
-                        <div class="veiw">
-                            <span>240</span>
-                            <span>بار دیده شده</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card_header">
-                        <img src="images/همه-چیز-در-مورد-IP-1.png" alt="Thmubnail">
-                    </div>
-                    <div class="card_body">
-                        <section>
-                            <a href="#">
-                                <span class="badge">پایتون</span>
-                            </a>
-                            <a href="#">
-                                <span class="badge">نرم افزار</span>
-                            </a>
-                        </section>
-                        <h3 class="card_title">آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس</h3>
-                    </div>
-                    <div class="card_footer">
-                        <div class="veiw">
-                            <span>240</span>
-                            <span>بار دیده شده</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card_header">
-                        <img src="images/همه-چیز-در-مورد-IP-1.png" alt="Thmubnail">
-                    </div>
-                    <div class="card_body">
-                        <section>
-                            <a href="#">
-                                <span class="badge">پایتون</span>
-                            </a>
-                            <a href="#">
-                                <span class="badge">نرم افزار</span>
-                            </a>
-                        </section>
-                        <h3 class="card_title">آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس</h3>
-                    </div>
-                    <div class="card_footer">
-                        <div class="veiw">
-                            <span>240</span>
-                            <span>بار دیده شده</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card_header">
-                        <img src="images/line_2.png" alt="Thmubnail">
-                    </div>
-                    <div class="card_body">
-                        <section>
-                            <a href="#">
-                                <span class="badge">پایتون</span>
-                            </a>
-                            <a href="#">
-                                <span class="badge">نرم افزار</span>
-                            </a>
-                        </section>
-                        <h3 class="card_title">آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس</h3>
-                    </div>
-                    <div class="card_footer">
-                        <div class="veiw">
-                            <span>240</span>
-                            <span>بار دیده شده</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card_header">
-                        <img src="images/همه-چیز-در-مورد-IP-1.png" alt="Thmubnail">
-                    </div>
-                    <div class="card_body">
-                        <section>
-                            <a href="#">
-                                <span class="badge">پایتون</span>
-                            </a>
-                            <a href="#">
-                                <span class="badge">نرم افزار</span>
-                            </a>
-                        </section>
-                        <h3 class="card_title">آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس</h3>
-                    </div>
-                    <div class="card_footer">
-                        <div class="veiw">
-                            <span>240</span>
-                            <span>بار دیده شده</span>
-                        </div>
-                    </div>
-                    
-
-                </div>
-            </div>
-
-            <div class="posts_by_category_row row">
-                <h2 class="posts_category_title">پایتون</h2>
-                <a class="btn_view_more_posts" href="">نمایش بیشتر</a>
-            </div>
-            <div class="posts_by_category">
-                <div class="card">
-                    <div class="card_header">
-                        <img src="images/همه-چیز-در-مورد-IP-1.png" alt="Thmubnail">
-                    </div>
-                    <div class="card_body">
-                        <section>
-                            <a href="#">
-                                <span class="badge">پایتون</span>
-                            </a>
-                            <a href="#">
-                                <span class="badge">نرم افزار</span>
-                            </a>
-                        </section>
-                        <h3 class="card_title">آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس</h3>
-                    </div>
-                    <div class="card_footer">
-                        <div class="veiw">
-                            <span>240</span>
-                            <span>بار دیده شده</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card_header">
-                        <img src="images/همه-چیز-در-مورد-IP-1.png" alt="Thmubnail">
-                    </div>
-                    <div class="card_body">
-                        <section>
-                            <a href="#">
-                                <span class="badge">پایتون</span>
-                            </a>
-                            <a href="#">
-                                <span class="badge">نرم افزار</span>
-                            </a>
-                        </section>
-                        <h3 class="card_title">آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس</h3>
-                    </div>
-                    <div class="card_footer">
-                        <div class="veiw">
-                            <span>240</span>
-                            <span>بار دیده شده</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card_header">
-                        <img src="images/همه-چیز-در-مورد-IP-1.png" alt="Thmubnail">
-                    </div>
-                    <div class="card_body">
-                        <section>
-                            <a href="#">
-                                <span class="badge">پایتون</span>
-                            </a>
-                            <a href="#">
-                                <span class="badge">نرم افزار</span>
-                            </a>
-                        </section>
-                        <h3 class="card_title">آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس</h3>
-                    </div>
-                    <div class="card_footer">
-                        <div class="veiw">
-                            <span>240</span>
-                            <span>بار دیده شده</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card_header">
-                        <img src="images/line_2.png" alt="Thmubnail">
-                    </div>
-                    <div class="card_body">
-                        <section>
-                            <a href="#">
-                                <span class="badge">پایتون</span>
-                            </a>
-                            <a href="#">
-                                <span class="badge">نرم افزار</span>
-                            </a>
-                        </section>
-                        <h3 class="card_title">آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس</h3>
-                    </div>
-                    <div class="card_footer">
-                        <div class="veiw">
-                            <span>240</span>
-                            <span>بار دیده شده</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card_header">
-                        <img src="images/همه-چیز-در-مورد-IP-1.png" alt="Thmubnail">
-                    </div>
-                    <div class="card_body">
-                        <section>
-                            <a href="#">
-                                <span class="badge">پایتون</span>
-                            </a>
-                            <a href="#">
-                                <span class="badge">نرم افزار</span>
-                            </a>
-                        </section>
-                        <h3 class="card_title">آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس</h3>
-                    </div>
-                    <div class="card_footer">
-                        <div class="veiw">
-                            <span>240</span>
-                            <span>بار دیده شده</span>
-                        </div>
-                    </div>
-                    
-
-                </div>
-            </div>    
-        </div>
-        <footer>
-            <section>
-
-                <div class="widget">
-                    <h4 class="title">درباره من</h4>
-                    <p>
-                        این متن تستیه و نمیدونم چرا نوشتمش اما بلاخره بدرد همین جاها مبخوره. جدیش نگیر. نگیر دیگه.
-                    </p>
-                </div>
-
-                <div class="widget">
-                    <h4 class="title">ارتباط با من</h4>
-                    <div class="ltr">
-                        <div class="icons">
-                            <a href="#">
-                                <img src="images/whatsapp_icon.png" alt="whatsapp">
-                            </a>
-
-                            <a href="#">
-                                <img src="images/instagram_icon.png" alt="instagram">
-                            </a>
-                            
-                            <a href="#">
-                                <img src="images/youtube_icon.png" alt="youtube">
-                            </a>
-                            
-                        </div>
-                        <p class="content">
-                            <a href="tel:+98 938 034 2995">+98 938 034 2995</a> 
-                            <a href="mailto:edris.qeshm2@gmail.com">edris.qeshm2@gmail.com</a>
-                            
-                        </p>
-                    </div>
-
-                    
-                </div>
-
-                <div class="widget">
-                    <h4 class="title">دسترسی سریع</h4>
-                    <div class="links">
-                        <a href="">پادکست ها</a>
-                        <a href="">وبلاگ</a>
-                        <a href="">کانال یوتیوب</a>
-                        <a href="">درباره من</a>
-                    </div>
-                </div>
-
-            </section>
-
-            <div class="copyright">
-                <p>تمامی حقوق برای وب سایت  <a href="#">ادریس رنجبر</a> محفوط می باشد.</p>
-                <p>طراحی و توسعه با ☕ و ❤️ توسط ادریس رنجبر</p>
-            </div>
-        </footer>
-
-
-        <nav class="bottom_nav_bar">
-            <div class="row icons">
-                <a href="index.html">
-                <div class="navbar_icon">
-                    <div class="container " id="index">
-                        
-                            <img src="images/home.png" alt="icon">
-                            <span>خانه</span>
-                    </div>
-                </div>
-                </a>
-                <a href="blog.html">
-                <div class="navbar_icon">
-                    <div class="container" id="blog">
-                        
-                            <img src="images/blog.png" alt="icon">
-                            <span>وبلاگ</span>
-                    </div>
-                </div>
-            </a>
-            <a href="#">
-                <div class="navbar_icon">
-                    <div class="container">
-                            <img src="images/tutorial.png" alt="icon">
-                            <span>دوره ها</span>
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="navbar_icon">
-                    <div class="container">
-                       
-                            <img src="images/podcast.png" alt="icon">
-                            <span>پادکست</span>
-                       
-                    </div>
-                </div>
-                </a>
-                
-            </div>
+      <header>
+        <nav class="menu">
+          <ul>
+            <li>
+              <a href="index.html">صفحه نخست</a>
+            </li>
+            <li>
+              <a href="blog.html"> وبلاگ</a>
+            </li>
+            <li>
+              <a href="podcasts.html"> پادکست </a>
+            </li>
+            <li>
+              <a href="index.html"> دوره ها</a>
+            </li>
+          </ul>
         </nav>
+      </header>
+      <div class="blog_container">
+        <section class="custom_btns">
+          <a href="#">
+            <img src="images/memoirs_custom_btn.png" alt="custom" />
+            <span> خاطرات </span>
+          </a>
+          <a href="#">
+            <img src="images/other_custom_btn.png" alt="custom" />
+            <span> متفرقه </span>
+          </a>
+          <a href="#">
+            <img src="images/Source Code.png" alt="custom" />
+            <span> کدنویسی </span>
+          </a>
+        </section>
 
+        <div class="order_by_box">
+          <form action="https://edrisranjbar.ir/blog" method="POST">
+            <label for="order" class="order">مرتب بر اساس:</label>
+            <select name="orderby" class="order" id="orderby">
+              <option value="date">تاریخ انتشار</option>
+              <option selected="" value="modified">تاریخ بروزرسانی</option>
+              <option value="views">بازدید</option>
+            </select>
+          </form>
+        </div>
+
+        <section class="posts_by_category_row row">
+          <h2 class="posts_category_title">تست</h2>
+          <a class="btn_view_more_posts" href="">نمایش بیشتر</a>
+        </section>
+
+        <div class="posts_by_category splide">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li class="card splide__slide">
+                <div class="card_header">
+                  <img src="images/همه-چیز-در-مورد-IP-1.png" alt="Thmubnail" />
+                </div>
+                <div class="card_body">
+                  <section>
+                    <a href="#">
+                      <span class="badge">پایتون</span>
+                    </a>
+                    <a href="#">
+                      <span class="badge">نرم افزار</span>
+                    </a>
+                  </section>
+                  <h3 class="card_title">
+                    آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس
+                  </h3>
+                </div>
+                <div class="card_footer">
+                  <div class="veiw">
+                    <span>240</span>
+                    <span>بار دیده شده</span>
+                  </div>
+                </div>
+              </li>
+              <li class="card splide__slide">
+                <div class="card_header">
+                  <img src="images/همه-چیز-در-مورد-IP-1.png" alt="Thmubnail" />
+                </div>
+                <div class="card_body">
+                  <section>
+                    <a href="#">
+                      <span class="badge">پایتون</span>
+                    </a>
+                    <a href="#">
+                      <span class="badge">نرم افزار</span>
+                    </a>
+                  </section>
+                  <h3 class="card_title">
+                    آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس
+                  </h3>
+                </div>
+                <div class="card_footer">
+                  <div class="veiw">
+                    <span>240</span>
+                    <span>بار دیده شده</span>
+                  </div>
+                </div>
+              </li>
+              <li class="card splide__slide">
+                <div class="card_header">
+                  <img src="images/همه-چیز-در-مورد-IP-1.png" alt="Thmubnail" />
+                </div>
+                <div class="card_body">
+                  <section>
+                    <a href="#">
+                      <span class="badge">پایتون</span>
+                    </a>
+                    <a href="#">
+                      <span class="badge">نرم افزار</span>
+                    </a>
+                  </section>
+                  <h3 class="card_title">
+                    آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس
+                  </h3>
+                </div>
+                <div class="card_footer">
+                  <div class="veiw">
+                    <span>240</span>
+                    <span>بار دیده شده</span>
+                  </div>
+                </div>
+              </li>
+              <li class="card splide__slide">
+                <div class="card_header">
+                  <img src="images/line_2.png" alt="Thmubnail" />
+                </div>
+                <div class="card_body">
+                  <section>
+                    <a href="#">
+                      <span class="badge">پایتون</span>
+                    </a>
+                    <a href="#">
+                      <span class="badge">نرم افزار</span>
+                    </a>
+                  </section>
+                  <h3 class="card_title">
+                    آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس
+                  </h3>
+                </div>
+                <div class="card_footer">
+                  <div class="veiw">
+                    <span>240</span>
+                    <span>بار دیده شده</span>
+                  </div>
+                </div>
+              </li>
+              <li class="card splide__slide">
+                <div class="card_header">
+                  <img src="images/همه-چیز-در-مورد-IP-1.png" alt="Thmubnail" />
+                </div>
+                <div class="card_body">
+                  <section>
+                    <a href="#">
+                      <span class="badge">پایتون</span>
+                    </a>
+                    <a href="#">
+                      <span class="badge">نرم افزار</span>
+                    </a>
+                  </section>
+                  <h3 class="card_title">
+                    آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس
+                  </h3>
+                </div>
+                <div class="card_footer">
+                  <div class="veiw">
+                    <span>240</span>
+                    <span>بار دیده شده</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <section class="posts_by_category_row row">
+          <h2 class="posts_category_title">تست</h2>
+          <a class="btn_view_more_posts" href="">نمایش بیشتر</a>
+        </section>
+
+        <div class="posts_by_category splide">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li class="card splide__slide">
+                <div class="card_header">
+                  <img src="images/همه-چیز-در-مورد-IP-1.png" alt="Thmubnail" />
+                </div>
+                <div class="card_body">
+                  <section>
+                    <a href="#">
+                      <span class="badge">پایتون</span>
+                    </a>
+                    <a href="#">
+                      <span class="badge">نرم افزار</span>
+                    </a>
+                  </section>
+                  <h3 class="card_title">
+                    آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس
+                  </h3>
+                </div>
+                <div class="card_footer">
+                  <div class="veiw">
+                    <span>240</span>
+                    <span>بار دیده شده</span>
+                  </div>
+                </div>
+              </li>
+              <li class="card splide__slide">
+                <div class="card_header">
+                  <img src="images/همه-چیز-در-مورد-IP-1.png" alt="Thmubnail" />
+                </div>
+                <div class="card_body">
+                  <section>
+                    <a href="#">
+                      <span class="badge">پایتون</span>
+                    </a>
+                    <a href="#">
+                      <span class="badge">نرم افزار</span>
+                    </a>
+                  </section>
+                  <h3 class="card_title">
+                    آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس
+                  </h3>
+                </div>
+                <div class="card_footer">
+                  <div class="veiw">
+                    <span>240</span>
+                    <span>بار دیده شده</span>
+                  </div>
+                </div>
+              </li>
+              <li class="card splide__slide">
+                <div class="card_header">
+                  <img src="images/همه-چیز-در-مورد-IP-1.png" alt="Thmubnail" />
+                </div>
+                <div class="card_body">
+                  <section>
+                    <a href="#">
+                      <span class="badge">پایتون</span>
+                    </a>
+                    <a href="#">
+                      <span class="badge">نرم افزار</span>
+                    </a>
+                  </section>
+                  <h3 class="card_title">
+                    آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس
+                  </h3>
+                </div>
+                <div class="card_footer">
+                  <div class="veiw">
+                    <span>240</span>
+                    <span>بار دیده شده</span>
+                  </div>
+                </div>
+              </li>
+              <li class="card splide__slide">
+                <div class="card_header">
+                  <img src="images/line_2.png" alt="Thmubnail" />
+                </div>
+                <div class="card_body">
+                  <section>
+                    <a href="#">
+                      <span class="badge">پایتون</span>
+                    </a>
+                    <a href="#">
+                      <span class="badge">نرم افزار</span>
+                    </a>
+                  </section>
+                  <h3 class="card_title">
+                    آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس
+                  </h3>
+                </div>
+                <div class="card_footer">
+                  <div class="veiw">
+                    <span>240</span>
+                    <span>بار دیده شده</span>
+                  </div>
+                </div>
+              </li>
+              <li class="card splide__slide">
+                <div class="card_header">
+                  <img src="images/همه-چیز-در-مورد-IP-1.png" alt="Thmubnail" />
+                </div>
+                <div class="card_body">
+                  <section>
+                    <a href="#">
+                      <span class="badge">پایتون</span>
+                    </a>
+                    <a href="#">
+                      <span class="badge">نرم افزار</span>
+                    </a>
+                  </section>
+                  <h3 class="card_title">
+                    آموزش انتقال و کپی فایل از اوبونتو لینوکس به اندروید و برعکس
+                  </h3>
+                </div>
+                <div class="card_footer">
+                  <div class="veiw">
+                    <span>240</span>
+                    <span>بار دیده شده</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <section>
+          <div class="widget">
+            <h4 class="title">درباره من</h4>
+            <p>
+              این متن تستیه و نمیدونم چرا نوشتمش اما بلاخره بدرد همین جاها
+              مبخوره. جدیش نگیر. نگیر دیگه.
+            </p>
+          </div>
+
+          <div class="widget">
+            <h4 class="title">ارتباط با من</h4>
+            <div class="ltr">
+              <div class="icons">
+                <a href="#">
+                  <img src="images/whatsapp_icon.png" alt="whatsapp" />
+                </a>
+
+                <a href="#">
+                  <img src="images/instagram_icon.png" alt="instagram" />
+                </a>
+
+                <a href="#">
+                  <img src="images/youtube_icon.png" alt="youtube" />
+                </a>
+              </div>
+              <p class="content">
+                <a href="tel:+98 938 034 2995">+98 938 034 2995</a>
+                <a href="mailto:edris.qeshm2@gmail.com"
+                  >edris.qeshm2@gmail.com</a
+                >
+              </p>
+            </div>
+          </div>
+
+          <div class="widget">
+            <h4 class="title">دسترسی سریع</h4>
+            <div class="links">
+              <a href="">پادکست ها</a>
+              <a href="">وبلاگ</a>
+              <a href="">کانال یوتیوب</a>
+              <a href="">درباره من</a>
+            </div>
+          </div>
+        </section>
+
+        <div class="copyright">
+          <p>
+            تمامی حقوق برای وب سایت <a href="#">ادریس رنجبر</a> محفوط می باشد.
+          </p>
+          <p>طراحی و توسعه با ☕ و ❤️ توسط ادریس رنجبر</p>
+        </div>
+      </footer>
+
+      <nav class="bottom_nav_bar">
+        <div class="row icons">
+          <a href="index.html">
+            <div class="navbar_icon">
+              <div class="container" id="index">
+                <img src="images/home.png" alt="icon" />
+                <span>خانه</span>
+              </div>
+            </div>
+          </a>
+          <a href="blog.html">
+            <div class="navbar_icon">
+              <div class="container" id="blog">
+                <img src="images/blog.png" alt="icon" />
+                <span>وبلاگ</span>
+              </div>
+            </div>
+          </a>
+          <a href="#">
+            <div class="navbar_icon">
+              <div class="container">
+                <img src="images/tutorial.png" alt="icon" />
+                <span>دوره ها</span>
+              </div>
+            </div>
+          </a>
+          <a href="">
+            <div class="navbar_icon">
+              <div class="container">
+                <img src="images/podcast.png" alt="icon" />
+                <span>پادکست</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </nav>
     </main>
-    <script>
-        
-        new Glider(document.querySelector('.posts_by_category'), {
-        slidesToShow: 3,
-        slidesToScroll: 'auto',
-        draggable: true,
-        dots: '.dots',
-        arrows: {
-            prev: '.glider-prev',
-            next: '.glider-next'
-        }
-        });
-    </script>
-</body>
+  </body>
 </html>

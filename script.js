@@ -1,4 +1,13 @@
-document.addEventListener('DOMContentLoaded', function() {
-    window.page = window.location.pathname.split("/")[1].replace(".html","");
-    document.querySelector(`.container#${window.page}`).classList.toggle("active");
+document.addEventListener('DOMContentLoaded', function () {
+    let elms = document.getElementsByClassName('splide');
+    for (let i = 0; i < elms.length; i++) {
+        new Splide(elms[i], {
+            arrows: false,
+            pagination: false,
+            rewind: true,
+            direction: 'rtl',
+            drag: 'free',
+        }).mount();
+    }
+
 });
