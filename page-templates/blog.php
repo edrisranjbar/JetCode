@@ -61,11 +61,15 @@ $categories = get_categories(["orderby" => "count", "order" => "DESC", "number" 
                 echo '<h2 class="posts_category_title">' . $category->name . '</h2>';
                 echo '<a class="btn_view_more_posts" href="' . get_category_link($category) . '">نمایش بیشتر</a>';
                 echo '</div>';
-                echo "<div class='posts_by_category'>";
+                echo "<div class='posts_by_category splide'>";
+                echo "<div class='splide__track'>";
+                echo "<ul class='splide__list'>";
                 while ($query->have_posts()) {
                     set_query_var('query', $query);
                     get_template_part('template-parts/content', 'none');
                 }
+                echo "</ul>";
+                echo "</div>";
                 echo "</div>";
             }
         } else {
