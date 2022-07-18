@@ -9,7 +9,7 @@ if (is_blog_page || is_tag_page || is_category_page || is_search_results_page ||
 }
 
 // Order by form submision
-if (is_blog_page|| is_tag_page|| is_category_page|| is_search_results_page) {
+if (is_blog_page || is_tag_page || is_category_page || is_search_results_page) {
     let orderby = document.querySelector('#orderby');
     orderby.addEventListener('change', (e) => {
         load_posts(true, orderby.value);
@@ -54,5 +54,16 @@ function load_more_comments() {
 }
 
 function load_posts(reload = true, orderby = "modified") {
-        location.href += (location.href.split('?')[1] ? '&':'?') + "orderby=" + orderby;
+    location.href += (location.href.split('?')[1] ? '&' : '?') + "orderby=" + orderby;
+}
+
+let elms = document.getElementsByClassName('splide');
+for (let i = 0; i < elms.length; i++) {
+    new Splide(elms[i], {
+        arrows: false,
+        pagination: false,
+        rewind: true,
+        direction: 'rtl',
+        drag: 'free',
+    }).mount();
 }

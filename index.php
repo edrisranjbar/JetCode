@@ -34,24 +34,27 @@ $blog_page_url = site_url('/blog') ?? get_option('page_for_posts');
 </div>
 <div class="recent_post">
     <h2 class="title">آخرین های وبلاگ</h2>
-    <div class="posts">
-        <!-- Showing recent 6 posts -->
-        <?php
-        $query = new WP_Query(
-            [
-                'post_type' => 'post',
-                'post_status' => 'publish',
-                'posts_per_page' => 6,
-            ]
-        );
-        if ($query->have_posts()) {
-            while ($query->have_posts()) {
-                set_query_var('query', $query);
-                get_template_part('template-parts/content', 'none');
-            }
-        }
-        ?>
-    </div>
+    <section class="splide" style="width: 100%;">
+        <div class="posts splide__track" style="display: block;">
+            <ul class="splide__list">
+                <?php
+                $query = new WP_Query(
+                    [
+                        'post_type' => 'post',
+                        'post_status' => 'publish',
+                        'posts_per_page' => 6,
+                    ]
+                );
+                if ($query->have_posts()) {
+                    while ($query->have_posts()) {
+                        set_query_var('query', $query);
+                        get_template_part('template-parts/content', 'none');
+                    }
+                }
+                ?>
+            </ul>
+        </div>
+    </section>
     <a href="<?php echo $blog_page_url; ?>" class="btn">رفتن به وبلاگ</a>
 </div>
 <div class="tutorials">
