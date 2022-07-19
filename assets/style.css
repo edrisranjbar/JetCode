@@ -54,6 +54,10 @@ body{
     direction: rtl;
     font-family: Samim;
 }
+main{
+    max-width: 1200px;
+    margin: 0 auto;
+}
 .ltr{
     direction: ltr;
 }
