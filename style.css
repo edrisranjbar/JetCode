@@ -14,31 +14,31 @@
 }
 @font-face {
     font-family: Samim;
-    src: url('font/Samim-FD.eot');
-    src: url('font/Samim-FD.eot?#iefix') format('embedded-opentype'),
-         url('font/Samim-FD.woff2') format('woff2'),
-         url('font/Samim-FD.woff') format('woff'),
-         url('font/Samim-FD.ttf') format('truetype');
+    src: url('../font/Samim-FD.eot');
+    src: url('../font/Samim-FD.eot?#iefix') format('embedded-opentype'),
+         url('../font/Samim-FD.woff2') format('woff2'),
+         url('../font/Samim-FD.woff') format('woff'),
+         url('../font/Samim-FD.ttf') format('truetype');
     font-weight: normal;
 }
   
 @font-face {
 font-family: Samim;
-src: url('font/Samim-Bold-FD.eot');
-src: url('font/Samim-Bold-FD.eot?#iefix') format('embedded-opentype'),
-        url('font/Samim-Bold-FD.woff2') format('woff2'),
-        url('font/Samim-Bold-FD.woff') format('woff'),
-        url('font/Samim-Bold-FD.ttf') format('truetype');
+src: url('../font/Samim-Bold-FD.eot');
+src: url('../font/Samim-Bold-FD.eot?#iefix') format('embedded-opentype'),
+        url('../font/Samim-Bold-FD.woff2') format('woff2'),
+        url('../font/Samim-Bold-FD.woff') format('woff'),
+        url('../font/Samim-Bold-FD.ttf') format('truetype');
 font-weight: bold;
 }
   
 @font-face {
 font-family: Samim;
-src: url('font/Samim-Medium-FD.eot');
-src: url('font/Samim-Medium-FD.eot?#iefix') format('embedded-opentype'),
-        url('font/Samim-Medium-FD.woff2') format('woff2'),
-        url('font/Samim-Medium-FD.woff') format('woff'),
-        url('font/Samim-Medium-FD.ttf') format('truetype');
+src: url('../font/Samim-Medium-FD.eot');
+src: url('../font/Samim-Medium-FD.eot?#iefix') format('embedded-opentype'),
+        url('../font/Samim-Medium-FD.woff2') format('woff2'),
+        url('../font/Samim-Medium-FD.woff') format('woff'),
+        url('../font/Samim-Medium-FD.ttf') format('truetype');
 font-weight: 500;
 }
 *{
@@ -53,6 +53,10 @@ body{
     background-color: var(--dark);
     direction: rtl;
     font-family: Samim;
+}
+main{
+    max-width: 1200px;
+    margin: 0 auto;
 }
 .ltr{
     direction: ltr;
@@ -69,7 +73,7 @@ nav.bottom_nav_bar{display: none;}
 /*stat header*/
 header{
     min-height: 232px;
-    background-image: url(images/Header\ Background.svg);
+    background-image: url(../images/Header\ Background.svg);
     background-repeat: no-repeat;
     background-position: top right;
 }
@@ -167,7 +171,7 @@ a{
 
 /* start about */
 .about{
-    background-image: url(images/About_Background.png);
+    background-image: url(../images/About_Background.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     min-height: 450px;
@@ -209,7 +213,6 @@ a{
     flex-direction: row;
 }
 .about .btn_resume{
-    z-index: 1;
     min-height: 45px;
     background-color: var(--dark1);
     color: var(--white);
@@ -221,6 +224,7 @@ a{
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    z-index: 2;
 }
 .about .btn_resume img{
     margin-left: 10px;
@@ -230,7 +234,6 @@ a{
     margin-left: 32px;
 }
 .about .btn_connection, .btn_view_more_posts{
-    z-index: 1;
     min-height: 45px;
     border: solid 1px var(--dark1);
     border-radius: 5px;
@@ -240,13 +243,14 @@ a{
     font-weight: 500;
     display: flex;
     align-items: center;
+    z-index: 2;
 }
 
 /* end about */
 
 /* start blog home page */
 .recent_post{
-    background-image: url(images/Wave\ Background.png);
+    background-image: url(../images/Wave\ Background.png);
     background-size: 100% 100%;
     position: relative;
     bottom: 250px;
@@ -283,8 +287,8 @@ a{
     box-shadow: 0px 10px 40px rgba(59, 59, 60, 0.1);
     border-radius: 8px;
     min-width: 350px;
-    margin-left: 16px !important;
-    margin-right: 16px !important;
+    margin-left: 16px;
+    margin-right: 16px;
 }
 
 .overlay{
@@ -318,7 +322,7 @@ a{
     text-align: right;
     color: var(--dark70);
 }
-.badge{
+.badge,.post-date{
     background-color: var(--white80);
     color: var(--dark80);
     padding: 2px 10px;
@@ -347,7 +351,7 @@ a{
     font-size: 16px;
 }
 .card_footer .veiw::before{
-    content: url(images/Eye.png);
+    content: url(../images/Eye.png);
     margin-left: 10px;
 }
 
@@ -380,6 +384,7 @@ a{
     display: flex;
     justify-content: center;
     margin-bottom: 115px;
+    padding: 0px 32px;
 }
 .custom_btns a{
     display: flex;
@@ -480,7 +485,7 @@ select.order{
 /* stat tutorials */
 .tutorials{
     background-color: var(--bg_light2);
-    margin-top: -500px;
+    margin-top: -490px;
     padding: 182px 0px;
 }
 .tutorials .title{
@@ -644,7 +649,9 @@ select.order{
     display: flex;
 }
 .post_container article{
+    height: fit-content;
     max-width: 70%;
+    min-width: 70%;
     margin-left: 28px;
     padding-bottom: 20px;
     background-color: var(--white);
@@ -673,7 +680,16 @@ select.order{
 .post_content p{
     margin: revert;
 }
-
+.post_content iframe{
+    width: 100%;
+}
+.post_content pre{
+    width: 100%;
+    direction: ltr;
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
 .comments{
     background-color: var(--light_blue);
     box-shadow: 0px 4px 30px rgb(204 204 204 / 70%);
@@ -751,7 +767,7 @@ select.order{
 }
 .comment {
     transition: display 0.5s;
-    display: initial;
+    display: none;
     max-width: 456px;
     min-width: 256px;
     background-color: var(--smoke_white);
@@ -819,7 +835,7 @@ select.order{
 aside{
     max-width: 30%;
 }
-aside .widget {
+aside .widget, .wp-container-1 {
     box-shadow: 0px 4px 30px rgb(204 204 204 / 70%);
     border-radius: 10px;
     background-color: var(--white);
@@ -834,12 +850,12 @@ aside .widget {
     color: var(--white);
 }
 .widget_body {
-    padding: 15px;
+    padding: 15px !important;
 }
-.widget_body .badge {
+.widget_body .badge,.post-date {
     font-size: 13px;
 }
-.widget_body p {
+.widget_body a {
     font-size: 18px;
     line-height: 28px;
     text-align: right;
@@ -849,7 +865,7 @@ aside .widget {
 .widget_body ul{
     list-style: none;
 }
-.widget_body a img{
+.widget_body img{
     max-width: 100%;
     height: auto;
     border-radius: 10px;
@@ -908,15 +924,15 @@ aside .widget {
 
 
 /* start footer */
-footer{
-    background-image: url(images/footerwave.png);
+main>footer{
+    background-image: url(../images/footerwave.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     margin-top: -65px;
 }
-footer section{
+main>footer section{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -924,10 +940,10 @@ footer section{
     padding: 0px 70px;
     column-gap: 100px;
 }
-footer .widget{
+main>footer .widget{
     width: clamp(250px,33%,350px);
 }
-footer .widget .title{
+main>footer .widget .title{
     color: var(--white);
     font-weight: 500;
     font-size: 24px;
@@ -936,24 +952,24 @@ footer .widget .title{
     padding-bottom: 10px;
     margin-bottom: 30px;
 }
-footer .widget p, footer .widget a{
+main>footer .widget p, footer .widget a{
     color: var(--white80);
     line-height: 38px;
     font-weight: 400;
     font-size: 24px;
 }
-footer .widget .icons a{
+main>footer .widget .icons a{
     margin-right: 15px;
     line-height: 0px;
     font-size: unset;
 }
-footer .widget p.content {
+main>footer .widget p.content {
     margin-top: 21px;
 }
-footer .widget p.content a{
+main>footer .widget p.content a{
     display: block;
 }
-footer .links a{
+main>footer .links a{
     display: block;
     margin-bottom: 10px;
 }
@@ -978,11 +994,11 @@ footer .links a{
     .intro .left img {
         max-height: 200px;
     }
-    footer section{
+    main>footer section{
         padding: 0px 50px;
         column-gap: 70px;
     }
-    footer .widget p, footer .widget a{
+    main>footer .widget p, footer .widget a{
         font-size: 21px;
     }
 
@@ -1045,7 +1061,7 @@ footer .links a{
         justify-content: center;
         width: 100%;
     }
-    footer section{
+    main>footer section{
         padding: 0px 30px;
         column-gap: 50px;
     }
@@ -1055,7 +1071,7 @@ footer .links a{
 
     /* about in tablet */
     .about{
-        background-image: url(images/About_Background_mobile.png);
+        background-image: url(../images/About_Background_mobile.png);
         padding: 0px 0px 200px 0px;
         background-size: 100% 100%;
         width: 100%;
@@ -1171,10 +1187,10 @@ footer .links a{
     }
     /* end podcasts page */
     
-    footer .widget .title{
+    main>footer .widget .title{
         font-size: 20px;
     }
-    footer .widget p, footer .widget a{
+    main>footer .widget p, footer .widget a{
         font-size: 18px;
     }
 
@@ -1206,7 +1222,7 @@ footer .links a{
     .overlay{
         height: 189px;
     }
-    .badge{
+    .badge,.post-date{
         font-size: 16px;
         font-weight: 400;
         margin-left: 5px;
@@ -1270,7 +1286,7 @@ footer .links a{
 
     /* about in mobile */
     .about{
-        background-image: url(images/About_Background_mobile.png);
+        background-image: url(../images/About_Background_mobile.png);
         padding: 0px 0px 100px 0px;
         background-size: 100% 100%;
         width: 100%;
@@ -1323,7 +1339,7 @@ footer .links a{
     /* end about in mobile */
     /* recent_post in mobile */
     .recent_post{
-        background-image: url(images/Recent_postBackground_mobile.png);
+        background-image: url(../images/Recent_postBackground_mobile.png);
         bottom: 170px;
         background-repeat: no-repeat;
         background-size: 100% 100%;
@@ -1398,7 +1414,7 @@ footer .links a{
         color: var(--dark80);
     }
     .card_footer .veiw::before{
-        content: url(images/Eye_mobile.png);
+        content: url(../images/Eye_mobile.png);
         margin-left: 3px;
     }
     /* end post & card in (recent_post & post page & category page) */
@@ -1612,6 +1628,7 @@ footer .links a{
     }
     .comment_form input, textarea{
         margin: 0 10px 0 0;
+        width: 100%;
     }
     .comment_form form{
         width: 100%;
@@ -1635,48 +1652,48 @@ footer .links a{
     }
     /* end post page */
     /* start footer */
-    footer{
-        background-image: url(images/footerwave_mobile.png);
+    main>footer{
+        background-image: url(../images/footerwave_mobile.png);
         background-size: 100% 100%;
     }
-    footer section{
+    main>footer section{
         margin-top: 70px;
         justify-content: unset;
         width: 100vw;
         flex-wrap: wrap;
         padding: 0px 16px;
     }
-    footer .widget{
-        width: 100vw;
+    main>footer .widget{
+        width: 100vw !important;
         margin: 0px 0px 16px 0px;
     }
-    footer .widget .title{
+    main>footer .widget .title{
         width: auto;
         font-size: 16px;
         padding-bottom: 16px;
         margin: 16px 0px;
     }
-    footer .widget p, footer .widget a{
-        font-size: 12px;
-        line-height: 18px;
+    main>footer .widget p, footer .widget a{
+        font-size: 12px !important;
+        line-height: 18px !important;
     }
-    footer .widget .icons{
+    main>footer .widget .icons{
         margin-bottom: 10px;
     }
-    footer .widget .icons a{
+    main>footer .widget .icons a{
         margin-right: 7px;
     }
-    footer .widget p.content{
+    main>footer .widget p.content{
         margin-top: 10px;
     }
-    footer .widget p.content a:first-child{
+    main>footer .widget p.content a:first-child{
         margin-bottom: 10px;
     }
-    footer .widget .links a{
+    main>footer .widget .links a{
         font-size: 14px;
     }
     
-    footer .widget .links a:not(:last-child){
+    main>footer .widget .links a:not(:last-child){
         margin-bottom: 16px; 
     }
         
@@ -1708,7 +1725,7 @@ footer .links a{
         box-shadow: 0px 0px 8px rgba(30, 28, 28, 0.2);
     }
     nav.bottom_nav_bar .row.icons{
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         width: 100%;
         height: 100%;
@@ -1756,4 +1773,39 @@ footer .links a{
         margin: auto;
     }
     /* end bottom navigation bar */
+}
+
+
+
+/* TEST */
+.widget_body ul li:not(.recentcomments){
+    display: flex;
+    flex-direction: column-reverse;
+}
+.post-date{
+    width: fit-content;
+}
+span.comment-author-link::before {
+    content: "";
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top: 15px;
+    margin-left: 10px;
+    background-image: url(https://secure.gravatar.com/avatar/?s=96&d=mm&r=g);
+    border-radius: 50%;
+    background-size: 40px 40px;
+}
+li.recentcomments {
+    padding-bottom: 20px;
+}
+.category_thumbnail{
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+}
+button.btn.btn_sm.btn_primary.more_comment_btn[disabled=true] {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
