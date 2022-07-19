@@ -55,7 +55,7 @@ body{
     font-family: Samim;
 }
 main{
-    max-width: 1200px;
+    max-width: 100rem;
     margin: 0 auto;
 }
 .ltr{
